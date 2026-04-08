@@ -1,0 +1,23 @@
+# API keys - NEVER commit these
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Temp files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Answer key images (large, not needed for app)
+data/ak_images/
+data/ak_*.png
+
+# Log files
+data/*.txt
+
+# Cache files (can be regenerated)
+# data/cache/
+*.txt

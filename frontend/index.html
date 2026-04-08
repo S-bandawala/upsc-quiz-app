@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>UPSC Aspirant</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    /* ── THEME TOKENS ── */
+    :root[data-theme="dark"]{
+      --bg:#08090f; --surface:#111320; --surface2:#181c2e; --surface3:#1e2338;
+      --border:#252a42; --text:#e8eaf6; --muted:#8892b0; --input-bg:#181c2e;
+      --accent:#7c6dfa; --accent2:#f5a623; --green:#22d68a; --red:#ff5c5c;
+      --blue:#38bdf8; --gold:#ffd700; --shadow:rgba(0,0,0,.5);
+      --sidebar-bg:#111320; --card-hover:rgba(124,109,250,.06);
+    }
+    :root[data-theme="light"]{
+      --bg:#f0f2f5; --surface:#ffffff; --surface2:#f7f8fc; --surface3:#eef0f5;
+      --border:#dde1ea; --text:#111b21; --muted:#6b7280; --input-bg:#f0f2f5;
+      --accent:#128c7e; --accent2:#f59e0b; --green:#25d366; --red:#ef4444;
+      --blue:#0ea5e9; --gold:#d97706; --shadow:rgba(0,0,0,.1);
+      --sidebar-bg:#ffffff; --card-hover:rgba(18,140,126,.04);
+    }
+
+    html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;transition:background .3s,color .3s}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(124,109,250,.3)}50%{box-shadow:0 0 40px rgba(124,109,250,.6)}}
+    @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+    @keyframes starPop{0%{transform:scale(0)rotate(-180deg)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
+    @keyframes slideIn{from{transform:translateX(-100%)}to{transform:none}}
+    @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
+    @keyframes countUp{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+
+    .fade-up{animation:fadeUp .4s ease both}
+    .fade-in{animation:fadeIn .3s ease both}
+
+    /* ── STARS BG (dark only) ── */
+    [data-theme="dark"] .stars-bg{
+      position:fixed;inset:0;pointer-events:none;z-index:0;
+      background:radial-gradient(ellipse at 20% 50%,rgba(124,109,250,.05) 0%,transparent 50%),
+                 radial-gradient(ellipse at 80% 20%,rgba(245,166,35,.03) 0%,transparent 40%);
+    }
+
+    /* ════════ LOGIN ════════ */
+    .login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;z-index:1}
+    .login-card{width:100%;max-width:440px;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:44px 38px;animation:fadeUp .5s ease;box-shadow:0 24px 80px var(--shadow)}
+    .login-emblem{width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,var(--accent),#a855f7);display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 20px;animation:glow 3s ease infinite}
+    .login-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:800;text-align:center;margin-bottom:6px;background:linear-gradient(135deg,var(--text),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .login-sub{text-align:center;color:var(--muted);font-size:.875rem;margin-bottom:28px;line-height:1.6}
+    .login-sub b{color:var(--accent2);font-weight:600}
+    .form-group{margin-bottom:16px}
+    .form-label{display:block;font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px}
+    .form-input{width:100%;background:var(--input-bg);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:.93rem;transition:border-color .2s,box-shadow .2s;outline:none;font-family:inherit}
+    .form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,109,250,.12)}
+    .form-input::placeholder{color:var(--muted)}
+    .form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238892b0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+    .btn-primary{width:100%;padding:13px;border:none;border-radius:11px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,109,250,.35);transition:opacity .2s,transform .15s;margin-top:6px}
+    .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+    .login-quote{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);text-align:center;font-size:.82rem;color:var(--muted);font-style:italic;line-height:1.6}
+    .login-quote b{color:var(--accent2);font-style:normal}
+
+    /* ════════ APP LAYOUT ════════ */
+    .app-wrap{display:flex;min-height:100vh;position:relative;z-index:1}
+
+    /* ── Sidebar ── */
+    .sidebar{width:232px;min-height:100vh;background:var(--sidebar-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;transition:transform .3s}
+    .sidebar-logo{padding:20px 18px 16px;border-bottom:1px solid var(--border)}
+    .logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .logo-sub{font-size:.7rem;color:var(--muted);margin-top:1px}
+    .sidebar-user{padding:12px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+    .avatar{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#a855f7);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex-shrink:0}
+    .user-name{font-weight:600;font-size:.88rem}
+    .user-target{font-size:.72rem;color:var(--accent2)}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:10px 18px;cursor:pointer;color:var(--muted);font-size:.86rem;font-weight:500;transition:all .18s;border:none;background:none;width:100%;text-align:left;position:relative}
+    .nav-item:hover{color:var(--text);background:var(--card-hover)}
+    .nav-item.active{color:var(--accent);background:rgba(124,109,250,.08)}
+    [data-theme="light"] .nav-item.active{background:rgba(18,140,126,.08)}
+    .nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:0 2px 2px 0}
+    .nav-icon{font-size:1rem;width:18px;text-align:center}
+    .sidebar-bottom{margin-top:auto;padding:12px 0}
+    .streak-pill{margin:0 14px 10px;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;text-align:center}
+    .streak-val{font-size:1.4rem;font-weight:800;color:var(--accent2)}
+    .streak-lbl{font-size:.68rem;color:var(--muted)}
+
+    /* ── Theme Toggle ── */
+    .theme-toggle{display:flex;align-items:center;gap:8px;padding:9px 18px;cursor:pointer;border:none;background:none;color:var(--muted);font-size:.85rem;font-family:inherit;width:100%;transition:color .2s}
+    .theme-toggle:hover{color:var(--text)}
+    .toggle-track{width:36px;height:20px;background:var(--border);border-radius:10px;position:relative;transition:background .3s;flex-shrink:0}
+    .toggle-track.on{background:var(--accent)}
+    .toggle-thumb{width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:left .2s}
+    .toggle-thumb.on{left:19px}
+
+    /* ── Mobile Header ── */
+    .mobile-header{display:none;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+    .hamburger{background:none;border:none;cursor:pointer;color:var(--text);font-size:1.3rem;padding:4px}
+    .mobile-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+    /* ── Drawer overlay ── */
+    .drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200}
+    .drawer-overlay.open{display:block}
+    .drawer{position:fixed;left:0;top:0;bottom:0;width:232px;z-index:201;animation:slideIn .25s ease;background:var(--sidebar-bg);border-right:1px solid var(--border);overflow-y:auto}
+
+    /* ── Bottom Nav (mobile) ── */
+    .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);z-index:100;padding-bottom:env(safe-area-inset-bottom)}
+    .bottom-nav-inner{display:flex;justify-content:space-around;padding:8px 0}
+    .bottom-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border:none;background:none;color:var(--muted);font-size:.65rem;font-weight:500;font-family:inherit;transition:color .18s}
+    .bottom-nav-item.active{color:var(--accent)}
+    .bottom-nav-icon{font-size:1.2rem}
+
+    /* ── Main ── */
+    .main-content{flex:1;padding:28px 32px;overflow-y:auto;min-width:0}
+    .page-header{margin-bottom:22px}
+    .page-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800}
+    .page-sub{color:var(--muted);font-size:.875rem;margin-top:3px}
+
+    /* ════════ DASHBOARD ════════ */
+    .greeting-banner{background:linear-gradient(135deg,rgba(124,109,250,.12),rgba(168,85,247,.07));border:1px solid rgba(124,109,250,.25);border-radius:16px;padding:22px 26px;margin-bottom:22px;display:flex;align-items:center;gap:16px}
+    [data-theme="light"] .greeting-banner{background:linear-gradient(135deg,rgba(18,140,126,.08),rgba(37,211,102,.05));border-color:rgba(18,140,126,.2)}
+    .greeting-emoji{font-size:2.6rem;animation:bounce 3s ease infinite}
+    .greeting-text h2{font-size:1.2rem;font-weight:700;margin-bottom:3px}
+    .greeting-text p{color:var(--muted);font-size:.85rem;line-height:1.6}
+    .btn-start{margin-left:auto;padding:10px 22px;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:.88rem;font-weight:700;white-space:nowrap;font-family:inherit;transition:opacity .2s}
+    .btn-start:hover{opacity:.88}
+
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+    .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px;text-align:center;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+    .stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--shadow)}
+    .stat-icon{font-size:1.3rem;margin-bottom:6px}
+    .stat-val{font-size:1.7rem;font-weight:800;animation:countUp .5s ease}
+    .stat-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+    .stat-delta{font-size:.7rem;margin-top:3px}
+    .stat-delta.up{color:var(--green)} .stat-delta.dn{color:var(--red)}
+
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:18px}
+    .card-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:14px}
+
+    /* Ring */
+    .ring-wrap{display:flex;align-items:center;gap:16px}
+    svg.ring{transform:rotate(-90deg)} .ring-track{fill:none;stroke:var(--surface2);stroke-width:5.5} .ring-fill{fill:none;stroke-width:5.5;stroke-linecap:round;transition:stroke-dashoffset .9s ease}
+
+    /* Topic bars */
+    .topic-bars{display:flex;flex-direction:column;gap:8px}
+    .tb-row{display:flex;align-items:center;gap:8px}
+    .tb-name{font-size:.77rem;color:var(--muted);width:88px;flex-shrink:0}
+    .tb-track{flex:1;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
+    .tb-fill{height:100%;border-radius:3px;transition:width .9s ease}
+    .tb-pct{font-size:.72rem;color:var(--muted);width:32px;text-align:right}
+
+    /* Daily goal */
+    .goal-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:18px;margin-bottom:20px}
+    .goal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .goal-title{font-weight:700;font-size:.9rem}
+    .goal-pct{font-size:1.15rem;font-weight:800;color:var(--accent)}
+    .goal-bar{height:9px;background:var(--surface2);border-radius:5px;overflow:hidden}
+    .goal-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:5px;transition:width 1s ease}
+    .goal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+    .goal-step{text-align:center;padding:9px 4px;background:var(--surface2);border-radius:8px;font-size:.72rem;color:var(--muted);border:1px solid var(--border)}
+    .goal-step.done{border-color:var(--green);background:rgba(34,214,138,.07);color:var(--green)}
+    .goal-step-icon{font-size:1rem;margin-bottom:3px}
+
+    .quote-card{background:linear-gradient(135deg,rgba(245,166,35,.08),rgba(255,215,0,.04));border:1px solid rgba(245,166,35,.18);border-radius:13px;padding:18px 22px;margin-bottom:20px}
+    .quote-text{font-size:.9rem;line-height:1.7;font-style:italic}
+    .quote-author{font-size:.78rem;color:var(--accent2);font-weight:600;margin-top:6px}
+
+    .badges-row{display:flex;gap:10px;flex-wrap:wrap}
+    .badge{display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:.78rem;font-weight:600;opacity:.35;filter:grayscale(1);transition:all .3s}
+    .badge.earned{opacity:1;filter:none;border-color:var(--accent2);background:rgba(245,166,35,.07)}
+
+    /* ════════ QUIZ ════════ */
+    .quiz-topbar{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 18px;margin-bottom:18px}
+    .q-progress-text{font-size:.83rem;color:var(--muted)}
+    .q-progress-text b{color:var(--text)}
+    .q-dots{display:flex;gap:3px;margin-top:5px}
+    .qdot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:background .3s}
+    .qdot.ok{background:var(--green)} .qdot.no{background:var(--red)} .qdot.cur{background:var(--accent);animation:pulse 1s ease infinite}
+    .timer{display:flex;align-items:center;gap:5px;padding:6px 13px;background:var(--surface2);border-radius:20px;font-size:.86rem;font-weight:600;font-variant-numeric:tabular-nums}
+    .timer.warn{color:var(--accent2)} .timer.danger{color:var(--red);animation:pulse .8s ease infinite}
+
+    .q-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:14px;animation:fadeUp .3s ease;box-shadow:0 4px 20px var(--shadow)}
+    .q-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+    .tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+    .t-topic{background:rgba(124,109,250,.1);color:var(--accent);border:1px solid rgba(124,109,250,.18)}
+    .t-sub{background:rgba(56,189,248,.08);color:var(--blue);border:1px solid rgba(56,189,248,.12)}
+    .t-yr{background:rgba(245,166,35,.09);color:var(--accent2);border:1px solid rgba(245,166,35,.14)}
+    .t-rep{background:rgba(34,214,138,.09);color:var(--green);border:1px solid rgba(34,214,138,.14)}
+    .t-hard{background:rgba(255,92,92,.08);color:var(--red);border:1px solid rgba(255,92,92,.12)}
+    .t-easy{background:rgba(34,214,138,.08);color:var(--green);border:1px solid rgba(34,214,138,.12)}
+    .freq-tag{margin-left:auto;font-size:.7rem;color:var(--accent2);font-weight:700;background:rgba(245,166,35,.07);padding:3px 9px;border-radius:20px;border:1px solid rgba(245,166,35,.12)}
+
+    .q-text{font-size:.98rem;line-height:1.78;margin-bottom:22px}
+    .options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .opt-btn{display:flex;align-items:flex-start;gap:11px;padding:13px 15px;background:var(--surface2);border:1.5px solid var(--border);border-radius:11px;cursor:pointer;text-align:left;color:var(--text);font-size:.87rem;line-height:1.5;font-family:inherit;transition:all .18s}
+    .opt-btn:hover:not(:disabled){border-color:var(--accent);background:rgba(124,109,250,.06);transform:translateY(-1px)}
+    .opt-btn.sel{border-color:var(--accent);background:rgba(124,109,250,.1)}
+    .opt-btn.cor{border-color:var(--green);background:rgba(34,214,138,.07)}
+    .opt-btn.wrg{border-color:var(--red);background:rgba(255,92,92,.07)}
+    .opt-btn.rev{border-color:rgba(34,214,138,.25);background:rgba(34,214,138,.03)}
+    .opt-btn:disabled{cursor:default}
+    .opt-lbl{font-weight:800;font-size:.82rem;min-width:22px;height:22px;width:22px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--border);flex-shrink:0;margin-top:1px;transition:all .18s}
+    .opt-btn.sel .opt-lbl{background:var(--accent);color:#fff}
+    .opt-btn.cor .opt-lbl{background:var(--green);color:#fff}
+    .opt-btn.wrg .opt-lbl{background:var(--red);color:#fff}
+
+    .submit-row{display:flex;gap:10px;align-items:center;margin-top:16px}
+    .btn-submit{padding:11px 28px;border:none;border-radius:10px;cursor:pointer;font-size:.92rem;font-weight:700;font-family:inherit;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;transition:all .2s;box-shadow:0 3px 14px rgba(124,109,250,.28)}
+    .btn-submit:hover{opacity:.9;transform:translateY(-1px)} .btn-submit:disabled{opacity:.35;cursor:default;transform:none}
+    .btn-sec{padding:11px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.86rem;font-weight:500;font-family:inherit;background:none;color:var(--muted);transition:all .2s}
+    .btn-sec:hover{border-color:var(--muted);color:var(--text)}
+    .btn-bk{padding:11px;border:1px solid var(--border);border-radius:10px;cursor:pointer;background:none;color:var(--muted);transition:all .2s;font-size:.95rem}
+    .btn-bk.on{color:var(--accent2);border-color:var(--accent2)}
+
+    .result-banner{display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:11px;margin-top:14px;animation:fadeUp .3s ease}
+    .result-banner.ok{background:rgba(34,214,138,.08);border:1px solid rgba(34,214,138,.2)}
+    .result-banner.no{background:rgba(255,92,92,.07);border:1px solid rgba(255,92,92,.18)}
+    .result-icon{font-size:1.7rem;animation:starPop .5s ease}
+    .result-title{font-weight:700;font-size:.92rem}
+    .result-sub{font-size:.8rem;color:var(--muted);margin-top:2px}
+
+    .insight-card{background:var(--surface2);border:1px solid var(--border);border-radius:13px;padding:18px;margin-top:12px;animation:fadeUp .35s ease .08s both}
+    .insight-head{display:flex;align-items:center;gap:7px;margin-bottom:10px}
+    .insight-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--accent)}
+    .insight-body{font-size:.87rem;line-height:1.8;white-space:pre-wrap}
+    .shimmer{background:linear-gradient(90deg,var(--muted) 25%,var(--text) 50%,var(--muted) 75%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 1.5s ease infinite}
+
+    /* Related Topics */
+    .related-box{margin-top:16px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:13px;animation:fadeUp .4s ease .2s both}
+    .related-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:10px}
+    .related-chips{display:flex;gap:8px;flex-wrap:wrap}
+    .related-chip{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;font-size:.8rem;font-weight:500;transition:all .2s;font-family:inherit}
+    .related-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,109,250,.07)}
+
+    .q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+    .btn-nav{padding:9px 20px;border:1px solid var(--border);border-radius:9px;cursor:pointer;font-size:.86rem;font-weight:600;background:var(--surface);color:var(--muted);transition:all .2s;font-family:inherit}
+    .btn-nav:hover:not(:disabled){border-color:var(--accent);color:var(--accent)} .btn-nav:disabled{opacity:.28;cursor:default}
+    .btn-nav.pri{background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;border:none}
+
+    /* Filter bar */
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .fsel{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:.8rem;cursor:pointer;font-family:inherit;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3.5L8 1' stroke='%238892b0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center;padding-right:26px;transition:border-color .2s}
+    .fsel:focus{outline:none;border-color:var(--accent)}
+    .fchip{padding:7px 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;font-size:.79rem;font-weight:500;font-family:inherit;transition:all .2s}
+    .fchip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    /* ════════ MOCK TEST ════════ */
+    .mock-modes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+    .mock-mode-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all .2s;text-align:center}
+    .mock-mode-card:hover,.mock-mode-card.sel{border-color:var(--accent);box-shadow:0 4px 24px rgba(124,109,250,.15)}
+    .mock-mode-icon{font-size:2rem;margin-bottom:10px}
+    .mock-mode-title{font-weight:700;font-size:.95rem;margin-bottom:5px}
+    .mock-mode-desc{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+    .mock-config{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:18px}
+    .mock-config-title{font-weight:700;margin-bottom:16px}
+    .topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:16px}
+    .topic-chip{padding:8px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:500;background:var(--surface2);color:var(--muted);transition:all .2s;text-align:center;font-family:inherit}
+    .topic-chip.on{border-color:var(--accent);background:rgba(124,109,250,.1);color:var(--accent)}
+    .mock-params{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+    .btn-launch{padding:13px 32px;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;transition:opacity .2s;box-shadow:0 4px 16px rgba(124,109,250,.3)}
+    .btn-launch:hover{opacity:.9} .btn-launch:disabled{opacity:.35;cursor:default}
+
+    /* Mock test running */
+    .mock-running{position:relative}
+    .mock-header{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 20px;margin-bottom:16px;gap:12px}
+    .mock-title{font-weight:700;font-size:.92rem}
+    .mock-timer{font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent)}
+    .mock-timer.danger{color:var(--red);animation:pulse .8s ease infinite}
+    .mock-q-grid{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}
+    .mq-dot{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;cursor:pointer;background:var(--surface2);color:var(--muted);transition:all .2s}
+    .mq-dot.att{background:rgba(124,109,250,.12);border-color:var(--accent);color:var(--accent)}
+    .mq-dot.cur{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn-submit-mock{padding:12px 28px;background:linear-gradient(135deg,var(--green),#10b981);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:.92rem;font-weight:700;font-family:inherit;transition:opacity .2s}
+    .btn-submit-mock:hover{opacity:.9}
+
+    /* Mock Result */
+    .result-header{text-align:center;padding:28px 0 20px}
+    .result-score-ring{width:130px;height:130px;margin:0 auto 16px}
+    .result-score-text{font-size:2.2rem;font-weight:900}
+    .result-score-sub{font-size:.85rem;color:var(--muted)}
+    .result-grade{display:inline-block;padding:6px 18px;border-radius:20px;font-weight:700;font-size:.88rem;margin-top:10px}
+    .result-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+    .rs-card{background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:14px;text-align:center}
+    .rs-val{font-size:1.4rem;font-weight:800}
+    .rs-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+    .topic-result-row{display:flex;align-items:center;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:6px;gap:12px}
+    .tr-topic{font-weight:600;font-size:.85rem;flex:1}
+    .tr-score{font-size:.82rem;color:var(--muted)}
+    .tr-pct{font-weight:700;font-size:.88rem}
+
+    /* ════════ CALENDAR ════════ */
+    .cal-wrap{display:flex;flex-direction:column;gap:20px}
+    .cal-month{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+    .cal-month-title{font-weight:700;font-size:.95rem;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+    .cal-day-hdr{text-align:center;font-size:.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;padding:4px 0}
+    .cal-day{min-height:44px;border-radius:8px;border:1px solid transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;padding:4px;position:relative}
+    .cal-day:hover{border-color:var(--border);background:var(--surface2)}
+    .cal-day.empty{cursor:default}
+    .cal-day.today{border-color:var(--accent)!important;background:rgba(124,109,250,.08)!important}
+    .cal-day.future{opacity:.4;cursor:default}
+    .cal-day-num{font-size:.8rem;font-weight:600;line-height:1}
+    .cal-dot{width:6px;height:6px;border-radius:50%;margin-top:3px}
+    .cal-day.done-full .cal-dot{background:var(--green)}
+    .cal-day.done-part .cal-dot{background:var(--accent2)}
+    .cal-day.done-none .cal-dot{background:var(--red)}
+    .cal-day.done-full{background:rgba(34,214,138,.06);border-color:rgba(34,214,138,.18)}
+    .cal-day.done-part{background:rgba(245,166,35,.05);border-color:rgba(245,166,35,.15)}
+    .cal-day.done-none{background:rgba(255,92,92,.05);border-color:rgba(255,92,92,.12)}
+    .cal-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.75rem;color:var(--muted)}
+    .cal-legend-item{display:flex;align-items:center;gap:5px}
+    .cal-legend-dot{width:10px;height:10px;border-radius:50%}
+    .cal-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .cal-stat{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:14px;text-align:center}
+    .cal-stat-val{font-size:1.5rem;font-weight:800;color:var(--accent)}
+    .cal-stat-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+    .cal-tip{background:linear-gradient(135deg,rgba(124,109,250,.1),rgba(168,85,247,.06));border:1px solid rgba(124,109,250,.2);border-radius:11px;padding:14px 18px;font-size:.85rem;line-height:1.6;color:var(--muted)}
+
+    /* ════════ REPEATED ════════ */
+    .rep-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:10px;cursor:pointer;transition:all .2s}
+    .rep-card:hover{border-color:var(--accent);box-shadow:0 4px 18px var(--shadow);transform:translateY(-1px)}
+    .rep-q{font-size:.88rem;line-height:1.7}
+
+    /* ════════ STATS ════════ */
+    .perf-table{width:100%;border-collapse:collapse}
+    .perf-table th{font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600;padding:7px 12px;text-align:left;border-bottom:1px solid var(--border)}
+    .perf-table td{padding:11px 12px;border-bottom:1px solid rgba(37,42,66,.4);font-size:.84rem}
+    .perf-table tr:hover td{background:var(--surface2)}
+    .acc-bar-wrap{display:inline-flex;align-items:center;gap:6px}
+    .acc-bar{width:60px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle}
+    .acc-bar-fill{height:100%;border-radius:2px}
+
+    /* ════════ CHALLENGE ════════ */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease}
+    .modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px 32px;width:100%;max-width:420px;animation:slideUp .25s ease;box-shadow:0 24px 80px var(--shadow)}
+    .modal-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:6px}
+    .modal-sub{font-size:.83rem;color:var(--muted);margin-bottom:22px;line-height:1.5}
+    .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;padding:4px;border-radius:6px;line-height:1}
+    .modal-close:hover{color:var(--text)}
+    .wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:#25d366;color:#fff;border:none;border-radius:11px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;margin-top:16px;transition:opacity .2s;text-decoration:none}
+    .wa-btn:hover{opacity:.9}
+    .copied-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:10px 20px;border-radius:20px;font-size:.85rem;font-weight:600;z-index:400;animation:slideUp .25s ease}
+
+    /* Misc */
+    .empty-state{text-align:center;padding:70px 20px;color:var(--muted)}
+    .empty-icon{font-size:2.8rem;margin-bottom:10px}
+    .spin{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+    .section-lbl{font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:12px}
+    .divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+    /* ── Mobile Responsive ── */
+    @media(max-width:768px){
+      .sidebar{display:none}
+      .mobile-header{display:flex}
+      .bottom-nav{display:block}
+      .main-content{padding:16px 14px 80px}
+      .stats-row{grid-template-columns:1fr 1fr}
+      .two-col{grid-template-columns:1fr}
+      .options{grid-template-columns:1fr}
+      .mock-modes{grid-template-columns:1fr}
+      .mock-params{grid-template-columns:1fr 1fr}
+      .topic-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+      .result-stats-grid{grid-template-columns:1fr 1fr 1fr}
+      .cal-stats-row{grid-template-columns:1fr 1fr}
+      .goal-steps{grid-template-columns:1fr 1fr}
+      .greeting-banner{flex-wrap:wrap}
+      .btn-start{margin-left:0;width:100%}
+    }
+    @media(max-width:480px){
+      .stats-row{grid-template-columns:1fr 1fr}
+      .q-card{padding:18px 16px}
+      .mock-params{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const API = window.location.port === '3000'
+  ? "http://localhost:8000"
+  : window.location.origin;  // When served from FastAPI or deployed, API is same origin
+
+const QUOTES = [
+  {text:"Success is not final, failure is not fatal: it is the courage to continue that counts.",author:"Winston Churchill"},
+  {text:"The UPSC exam tests not just your knowledge, but your character.",author:"IAS Mentor"},
+  {text:"Every question you practice today is a step closer to your dream.",author:"Aspirant's Creed"},
+  {text:"Discipline is the bridge between goals and accomplishment.",author:"Jim Rohn"},
+  {text:"You are not behind. You are exactly where you need to be.",author:"Daily Reminder"},
+  {text:"Your rank will be decided not just by what you know, but how consistent you are.",author:"IAS Topper"},
+  {text:"Small daily improvements are the key to staggering long-term results.",author:"Unknown"},
+  {text:"The secret of getting ahead is getting started.",author:"Mark Twain"},
+];
+
+const TOPICS_RELATED = {
+  "History":["Polity","Art & Culture","Geography"],
+  "Geography":["Environment","Economy","Science & Technology"],
+  "Polity":["Economy","History","Current Affairs"],
+  "Economy":["Polity","Current Affairs","Science & Technology"],
+  "Environment":["Geography","Science & Technology","Current Affairs"],
+  "Science & Technology":["Economy","Environment","Current Affairs"],
+  "International Relations":["Polity","Current Affairs","History"],
+  "Current Affairs":["Polity","Economy","International Relations"],
+};
+
+const BADGES=[
+  {id:'first_q',icon:'🎯',label:'First Step',threshold:1,type:'att'},
+  {id:'q_50',icon:'⚡',label:'Half Century',threshold:50,type:'att'},
+  {id:'q_100',icon:'💯',label:'Centurion',threshold:100,type:'att'},
+  {id:'streak_3',icon:'🔥',label:'3-Day Streak',threshold:3,type:'streak'},
+  {id:'acc_70',icon:'🎖️',label:'Sharp Mind',threshold:70,type:'acc'},
+  {id:'acc_85',icon:'🏆',label:'Topper Level',threshold:85,type:'acc'},
+  {id:'mock_1',icon:'📋',label:'Mock Taker',threshold:1,type:'mock'},
+];
+
+// ── Storage ──────────────────────────────────────────────────────────────────
+const S={
+  get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},
+  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v)),
+};
+
+// ── Hooks ────────────────────────────────────────────────────────────────────
+const useTimer=(running,resetKey)=>{
+  const [s,setS]=React.useState(0);
+  React.useEffect(()=>{setS(0)},[resetKey]);
+  React.useEffect(()=>{
+    if(!running)return;
+    const id=setInterval(()=>setS(x=>x+1),1000);
+    return()=>clearInterval(id);
+  },[running]);
+  return s;
+};
+const useCountdown=(totalSecs,running)=>{
+  const [s,setS]=React.useState(totalSecs);
+  React.useEffect(()=>setS(totalSecs),[totalSecs]);
+  React.useEffect(()=>{
+    if(!running)return;
+    const id=setInterval(()=>setS(x=>{if(x<=1){clearInterval(id);return 0}return x-1}),1000);
+    return()=>clearInterval(id);
+  },[running]);
+  return s;
+};
+const useFetch=(url)=>{
+  const [data,setData]=React.useState(null);
+  const [loading,setLoading]=React.useState(true);
+  const refresh=React.useCallback(()=>{
+    if(!url)return;
+    setLoading(true);
+    fetch(url).then(r=>r.json()).then(d=>{setData(d);setLoading(false)}).catch(()=>setLoading(false));
+  },[url]);
+  React.useEffect(()=>{refresh()},[refresh]);
+  return{data,loading,refresh};
+};
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+const fmt=(s)=>`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+const Spin=()=><span className="spin"/>;
+const Tags=({q})=>(
+  <div className="q-meta">
+    {q.q_num&&q.year_first&&<span className="tag" style={{background:'var(--surface2)',color:'var(--text)',fontWeight:700,fontVariantNumeric:'tabular-nums'}}>UPSC {q.year_first} | Q.{q.q_num} | GS-I</span>}
+    {q.topic&&<span className="tag t-topic">{q.topic}</span>}
+    {q.subtopic&&<span className="tag t-sub">{q.subtopic}</span>}
+    {q.difficulty==='hard'&&<span className="tag t-hard">Hard</span>}
+    {q.difficulty==='easy'&&<span className="tag t-easy">Easy</span>}
+    {(q.year_tags||[]).length>1&&(q.year_tags||[]).map(y=><span key={y} className="tag t-yr">{y}</span>)}
+    {q.is_repeated?<span className="tag t-rep">⟳ Repeated</span>:null}
+    {q.frequency>1&&<span className="freq-tag">UPSC {q.frequency}×</span>}
+  </div>
+);
+const Ring=({pct,size=80,color,label})=>{
+  const r=32,c=2*Math.PI*r,off=c-(pct/100)*c;
+  return(
+    <div style={{position:'relative',display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+      <svg width={size} height={size} viewBox="0 0 80 80" className="ring">
+        <circle className="ring-track" cx="40" cy="40" r={r}/>
+        <circle className="ring-fill" cx="40" cy="40" r={r} stroke={color} strokeDasharray={c} strokeDashoffset={off}/>
+      </svg>
+      <div style={{position:'absolute',textAlign:'center'}}>
+        <div style={{fontSize:'1rem',fontWeight:800}}>{pct}%</div>
+        <div style={{fontSize:'.6rem',color:'var(--muted)'}}>{label}</div>
+      </div>
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// LOGIN
+// ════════════════════════════════════════════════════════════════════
+const LoginPage=({onLogin})=>{
+  const [name,setName]=React.useState('');
+  const [target,setTarget]=React.useState('2026');
+  const [goal,setGoal]=React.useState('20');
+  const [examDate,setExamDate]=React.useState('2026-05-24');
+  const q=QUOTES[Math.floor(Math.random()*QUOTES.length)];
+  const submit=e=>{e.preventDefault();if(!name.trim())return;const u={name:name.trim(),target,dailyGoal:+goal,examDate,streak:0,joinDate:new Date().toISOString()};S.set('upsc_user',u);onLogin(u)};
+  return(
+    <div className="login-page">
+      <div className="stars-bg"/>
+      <div className="login-card">
+        <div className="login-emblem">🏛️</div>
+        <h1 className="login-title">Begin Your IAS Journey</h1>
+        <p className="login-sub">Your dream of serving <b>India</b> starts with a single question.<br/>Crack <b>UPSC CSE</b> with AI-powered practice.</p>
+        <form onSubmit={submit}>
+          <div className="form-group"><label className="form-label">Your Name</label><input className="form-input" placeholder="e.g. Arjun Sharma" value={name} onChange={e=>setName(e.target.value)} required autoFocus/></div>
+          <div className="form-group"><label className="form-label">Target Year</label>
+            <select className="form-input form-select" value={target} onChange={e=>setTarget(e.target.value)}>
+              {['2025','2026','2027','2028'].map(y=><option key={y} value={y}>UPSC CSE {y}</option>)}
+            </select>
+          </div>
+          <div className="form-group"><label className="form-label">Exam Date</label><input className="form-input" type="date" value={examDate} onChange={e=>setExamDate(e.target.value)}/></div>
+          <div className="form-group"><label className="form-label">Daily Goal</label>
+            <select className="form-input form-select" value={goal} onChange={e=>setGoal(e.target.value)}>
+              <option value="10">10 questions/day — Starter</option>
+              <option value="20">20 questions/day — Steady</option>
+              <option value="30">30 questions/day — Serious</option>
+              <option value="50">50 questions/day — Warrior</option>
+            </select>
+          </div>
+          <button type="submit" className="btn-primary">🚀 Start Preparing</button>
+        </form>
+        <div className="login-quote">"{q.text}"<div style={{marginTop:5}}><b>— {q.author}</b></div></div>
+      </div>
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// DASHBOARD
+// ════════════════════════════════════════════════════════════════════
+const Dashboard=({user,go})=>{
+  const {data:stats}=useFetch(`${API}/stats`);
+  const {data:health}=useFetch(`${API}/health`);
+  const q=React.useMemo(()=>QUOTES[new Date().getDay()%QUOTES.length],[]);
+  const ov=stats?.overall||{};
+  const att=ov.total_attempted||0,cor=ov.total_correct||0,acc=ov.accuracy_pct||0;
+  const todayDone=S.get('today_done_'+new Date().toDateString(),0);
+  const goalPct=Math.min(100,Math.round(todayDone/user.dailyGoal*100));
+  const streak=user.streak||0;
+  const daysLeft=Math.ceil((new Date(user.examDate||`${user.target}-05-24`)-new Date())/86400000);
+  const topicPerf=(stats?.by_topic_performance||[]).filter(t=>t.total_attempted>0).sort((a,b)=>a.accuracy_pct-b.accuracy_pct).slice(0,5);
+  const earned=new Set([att>=1&&'first_q',att>=50&&'q_50',att>=100&&'q_100',streak>=3&&'streak_3',acc>=70&&'acc_70',acc>=85&&'acc_85',(S.get('mocks_done',0)>=1)&&'mock_1'].filter(Boolean));
+  const hr=new Date().getHours();
+  const greet=hr<12?'Good morning':hr<17?'Good afternoon':'Good evening';
+  return(
+    <div className="fade-in">
+      <div className="greeting-banner fade-up">
+        <div className="greeting-emoji">{hr<12?'🌅':hr<17?'☀️':'🌙'}</div>
+        <div className="greeting-text">
+          <h2>{greet}, {user.name.split(' ')[0]}!</h2>
+          <p>Target: <b style={{color:'var(--accent2)'}}>UPSC CSE {user.target}</b> &nbsp;•&nbsp;
+            {daysLeft>0?<><b style={{color:'var(--accent)'}}>{daysLeft}</b> days left</>:'Exam day!'}
+            &nbsp;•&nbsp; Goal: <b>{user.dailyGoal} Qs/day</b></p>
+        </div>
+        <button className="btn-start" onClick={()=>go('quickpractice')}>Practice Now (20 Random Qs) →</button>
+      </div>
+
+      <div className="stats-row fade-up" style={{animationDelay:'.05s'}}>
+        {[{icon:'📝',val:att,lbl:'Attempted',color:'var(--accent)',d:`+${todayDone} today`,up:true},
+          {icon:'✅',val:cor,lbl:'Correct',color:'var(--green)',d:acc>0?`${acc}% accuracy`:null,up:acc>=60},
+          {icon:'🔥',val:streak,lbl:'Day Streak',color:'var(--accent2)',d:streak>0?'Keep it up!':'Start today',up:streak>0},
+          {icon:'📚',val:health?.questions_in_db||'…',lbl:'Question Bank',color:'var(--blue)',d:'GS Paper I',up:true},
+        ].map((s,i)=>(
+          <div key={i} className="stat-card">
+            <div className="stat-icon">{s.icon}</div>
+            <div className="stat-val" style={{color:s.color}}>{s.val}</div>
+            <div className="stat-lbl">{s.lbl}</div>
+            {s.d&&<div className={`stat-delta ${s.up?'up':'dn'}`}>{s.d}</div>}
+          </div>
+        ))}
+      </div>
+
+      <div className="goal-card fade-up" style={{animationDelay:'.1s'}}>
+        <div className="goal-head"><span className="goal-title">🎯 Today's Goal — {user.dailyGoal} questions</span><span className="goal-pct">{goalPct}%</span></div>
+        <div className="goal-bar"><div className="goal-fill" style={{width:`${goalPct}%`}}/></div>
+        <div className="goal-steps">
+          {[{icon:'🌅',l:'Morning',done:todayDone>=user.dailyGoal*.25},{icon:'📖',l:'Midday',done:todayDone>=user.dailyGoal*.5},{icon:'✏️',l:'Evening',done:todayDone>=user.dailyGoal*.75},{icon:'🌟',l:'Goal Met',done:todayDone>=user.dailyGoal}].map((s,i)=>(
+            <div key={i} className={`goal-step ${s.done?'done':''}`}>
+              <div className="goal-step-icon">{s.done?'✅':s.icon}</div>{s.l}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="two-col fade-up" style={{animationDelay:'.15s'}}>
+        <div className="card">
+          <div className="card-title">Overall Accuracy</div>
+          <div className="ring-wrap">
+            <Ring pct={Math.round(acc)} color="var(--accent)" label="Accuracy"/>
+            <div style={{fontSize:'.82rem',lineHeight:1.9}}>
+              <div>✅ Correct: <b style={{color:'var(--green)'}}>{cor}</b></div>
+              <div>❌ Wrong: <b style={{color:'var(--red)'}}>{att-cor}</b></div>
+              <div>📊 Total: <b>{att}</b></div>
+              <div style={{marginTop:4,fontSize:'.75rem',color:acc>=60?'var(--green)':'var(--accent2)'}}>
+                {acc>=85?'🏆 Topper Level!':acc>=70?'🎖️ On Track!':acc>=50?'📈 Keep Going!':'💪 Keep Practicing!'}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-title">Weak Topics</div>
+          {topicPerf.length===0?<div style={{color:'var(--muted)',fontSize:'.83rem',paddingTop:8}}>Attempt questions to see analysis.</div>:
+          <div className="topic-bars">
+            {topicPerf.map(t=>(
+              <div key={t.topic+t.subtopic} className="tb-row">
+                <div className="tb-name">{t.topic}</div>
+                <div className="tb-track"><div className="tb-fill" style={{width:`${t.accuracy_pct||0}%`,background:(t.accuracy_pct||0)<40?'var(--red)':(t.accuracy_pct||0)<65?'var(--accent2)':'var(--green)'}}/></div>
+                <div className="tb-pct">{t.accuracy_pct||0}%</div>
+              </div>
+            ))}
+          </div>}
+        </div>
+      </div>
+
+      <div className="quote-card fade-up" style={{animationDelay:'.2s'}}>
+        <div className="quote-text">"{q.text}"</div>
+        <div className="quote-author">— {q.author}</div>
+      </div>
+
+      <div className="fade-up" style={{animationDelay:'.25s'}}>
+        <div className="section-lbl">Achievements</div>
+        <div className="badges-row">
+          {BADGES.map(b=><div key={b.id} className={`badge ${earned.has(b.id)?'earned':''}`}><span>{b.icon}</span>{b.label}</div>)}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// QUIZ
+// ════════════════════════════════════════════════════════════════════
+const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{}})=>{
+  const [started,setStarted]=React.useState(quickMode);
+  const [qs,setQs]=React.useState([]);
+  const [idx,setIdx]=React.useState(0);
+  const [sel,setSel]=React.useState(null);
+  const [result,setResult]=React.useState(null);
+  const [insight,setInsight]=React.useState(null);
+  const [loadingI,setLoadingI]=React.useState(false);
+  const [hist,setHist]=React.useState([]);
+  const [bookmarks,setBm]=React.useState(()=>S.get('bookmarks',[]));
+  const [filters,setFilters]=React.useState(initFilters);
+  const [practiceCount,setPracticeCount]=React.useState(quickMode?20:30);
+  const [showRelated,setShowRelated]=React.useState(false);
+  const {data:topics}=useFetch(`${API}/topics`);
+  const timerKey=idx;
+  const secs=useTimer(!result&&qs.length>0&&started,timerKey);
+  const secsRef=React.useRef(0);
+  React.useEffect(()=>{secsRef.current=secs},[secs]);
+
+  const load=React.useCallback(()=>{
+    if(!started)return;
+    const p=new URLSearchParams({limit:Math.min(practiceCount*2,500),...Object.fromEntries(Object.entries(filters).filter(([,v])=>v))});
+    fetch(`${API}/questions?${p}`).then(r=>r.json()).then(d=>{
+      let list=(d.questions||[]).sort(()=>Math.random()-0.5).slice(0,practiceCount);
+      setQs(list);setIdx(0);setSel(null);setResult(null);setInsight(null);setHist([]);setShowRelated(false);
+    });
+  },[JSON.stringify(filters),started,practiceCount]);
+
+  React.useEffect(()=>{load()},[load]);
+  React.useEffect(()=>{setSel(null);setResult(null);setInsight(null);setShowRelated(false)},[idx]);
+
+  const q=qs[idx];
+  const tc=secs>120?'danger':secs>60?'warn':'';
+  const topicNames=topics?Object.keys(topics):[];
+  const isBm=q&&bookmarks.includes(q.id);
+
+  const submit=async()=>{
+    if(!sel||result)return;
+    setLoadingI(true);
+    try{
+      const r=await fetch(`${API}/attempt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question_id:q.id,selected_option:sel,time_taken_sec:secsRef.current})});
+      const d=await r.json();
+      setResult(d);setInsight(d.ai_insight);
+      const nh=[...hist];nh[idx]={ok:d.is_correct};setHist(nh);
+      const today=new Date().toDateString();
+      S.set('today_done_'+today,(S.get('today_done_'+today,0)+1));
+      const dateKey=new Date().toISOString().slice(0,10);
+      const log=S.get('daily_log',{});
+      log[dateKey]={attempted:(log[dateKey]?.attempted||0)+1,correct:(log[dateKey]?.correct||0)+(d.is_correct?1:0),goal:user.dailyGoal};
+      S.set('daily_log',log);
+      if(onAttempt)onAttempt(d.is_correct);
+      setTimeout(()=>setShowRelated(true),2000);
+    }finally{setLoadingI(false)}
+  };
+
+  const getState=o=>{
+    if(!result)return sel===o?'sel':null;
+    if(o===result.correct_option)return'cor';
+    if(o===sel&&!result.is_correct)return'wrg';
+    return'rev';
+  };
+
+  const relatedTopics=q?.topic?TOPICS_RELATED[q.topic]||[]:[];
+
+  if(!started){
+    return(
+      <div className="fade-in">
+        <div className="card" style={{padding:28}}>
+          <h3 style={{marginBottom:6,fontSize:'1.1rem'}}>Practice Setup</h3>
+          <p style={{color:'var(--muted)',fontSize:'.85rem',marginBottom:20}}>Choose your preferences and start practicing at your own pace.</p>
+          <div className="section-lbl" style={{marginBottom:8}}>Topic</div>
+          <div className="topic-grid" style={{marginBottom:18}}>
+            <button className={`topic-chip ${!filters.topic?'on':''}`} onClick={()=>setFilters(f=>({...f,topic:undefined}))}>All Topics</button>
+            {topicNames.map(t=>(
+              <button key={t} className={`topic-chip ${filters.topic===t?'on':''}`} onClick={()=>setFilters(f=>({...f,topic:t}))}>{t}</button>
+            ))}
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10,marginBottom:20}}>
+            <div className="form-group" style={{marginBottom:0}}>
+              <label className="form-label">Questions</label>
+              <select className="form-input form-select" value={practiceCount} onChange={e=>setPracticeCount(+e.target.value)}>
+                {[10,20,30,50].map(n=><option key={n} value={n}>{n} Qs</option>)}
+              </select>
+            </div>
+            <div className="form-group" style={{marginBottom:0}}>
+              <label className="form-label">Difficulty</label>
+              <select className="form-input form-select" value={filters.difficulty||''} onChange={e=>setFilters(f=>({...f,difficulty:e.target.value||undefined}))}>
+                <option value="">All</option><option value="easy">Easy</option>
+                <option value="medium">Medium</option><option value="hard">Hard</option>
+              </select>
+            </div>
+            <div className="form-group" style={{marginBottom:0}}>
+              <label className="form-label">Year</label>
+              <select className="form-input form-select" value={filters.year||''} onChange={e=>setFilters(f=>({...f,year:e.target.value||undefined}))}>
+                <option value="">All Years</option>
+                {[2024,2023,2020,2019,2018,2017,2016,2015].map(y=><option key={y} value={y}>{y}</option>)}
+              </select>
+            </div>
+          </div>
+          <button className="btn-launch" onClick={()=>setStarted(true)}>Start Practice</button>
+        </div>
+      </div>
+    );
+  }
+
+  if(!qs.length)return<div className="empty-state"><div className="empty-icon">📭</div><div>No questions found. Try different filters.</div></div>;
+
+  return(
+    <div>
+      <div className="filter-bar">
+        <select className="fsel" value={filters.topic||''} onChange={e=>{setFilters(f=>({...f,topic:e.target.value||undefined}));setStarted(false);}}>
+          <option value="">All Topics</option>{topicNames.map(t=><option key={t} value={t}>{t}</option>)}
+        </select>
+        <select className="fsel" value={filters.difficulty||''} onChange={e=>{setFilters(f=>({...f,difficulty:e.target.value||undefined}));setStarted(false);}}>
+          <option value="">All Difficulties</option>
+          <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>
+        </select>
+        <select className="fsel" onChange={e=>setFilters(f=>({...f,year:e.target.value||undefined}))}>
+          <option value="">All Years</option>
+          {[2025,2024,2023,2022,2021,2020,2019,2018,2017,2016,2015].map(y=><option key={y} value={y}>{y}</option>)}
+        </select>
+        <button className={`fchip ${filters.repeated_only?'on':''}`} onClick={()=>setFilters(f=>({...f,repeated_only:!f.repeated_only||undefined}))}>⟳ Repeated</button>
+      </div>
+
+      <div className="quiz-topbar">
+        <div>
+          <div className="q-progress-text">Q <b>{idx+1}</b> / <b>{qs.length}</b></div>
+          <div className="q-dots">{qs.slice(0,Math.min(25,qs.length)).map((_,i)=>(
+            <div key={i} className={`qdot ${i===idx?'cur':hist[i]?.ok?'ok':hist[i]?'no':''}`}/>
+          ))}</div>
+        </div>
+        <div className={`timer ${tc}`}>⏱ {fmt(secs)}</div>
+      </div>
+
+      {q&&(
+        <div className="q-card">
+          <Tags q={q}/>
+          <p className="q-text">{q.question}</p>
+          <div className="options">
+            {[['a',q.option_a],['b',q.option_b],['c',q.option_c],['d',q.option_d]].map(([l,t])=>(
+              <button key={l} className={`opt-btn ${getState(l)||''}`} onClick={()=>!result&&setSel(l)} disabled={!!result}>
+                <span className="opt-lbl">{l.toUpperCase()}</span><span>{t}</span>
+              </button>
+            ))}
+          </div>
+          {!result&&(
+            <div className="submit-row">
+              <button className="btn-submit" onClick={submit} disabled={!sel||loadingI}>{loadingI?<><Spin/>&nbsp;Analysing…</>:'Submit Answer'}</button>
+              <button className="btn-sec" onClick={()=>setIdx(i=>i+1)} disabled={idx>=qs.length-1}>Skip</button>
+              <button className={`btn-bk ${isBm?'on':''}`} onClick={()=>{const n=isBm?bookmarks.filter(id=>id!==q.id):[...bookmarks,q.id];setBm(n);S.set('bookmarks',n)}}>{isBm?'🔖':'📌'}</button>
+            </div>
+          )}
+          {result&&(
+            <div className={`result-banner ${result.is_correct?'ok':'no'}`}>
+              <div className="result-icon">{result.is_correct?'🎉':'💡'}</div>
+              <div>
+                <div className="result-title">{result.is_correct?'Correct! Well done!':`Incorrect — Correct: (${result.correct_option?.toUpperCase()})`}</div>
+                <div className="result-sub">{result.is_correct?'Keep this momentum!':"Learn from it and move on!"}</div>
+              </div>
+            </div>
+          )}
+          {(loadingI||insight)&&(
+            <div className="insight-card">
+              <div className="insight-head"><span>🤖</span><span className="insight-title">AI Mentor Analysis</span></div>
+              <div className="insight-body">{loadingI?<span className="shimmer">Fetching UPSC patterns…</span>:insight}</div>
+            </div>
+          )}
+          {showRelated&&relatedTopics.length>0&&(
+            <div className="related-box">
+              <div className="related-title">📚 Related Topics to Practice Next</div>
+              <div className="related-chips">
+                {relatedTopics.map(t=>(
+                  <button key={t} className="related-chip" onClick={()=>setFilters(f=>({...f,topic:t}))}>{t} →</button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className="q-nav">
+        <button className="btn-nav" onClick={()=>setIdx(i=>i-1)} disabled={idx===0}>← Prev</button>
+        <span style={{fontSize:'.78rem',color:'var(--muted)'}}>{result?(result.is_correct?'✅ Got it':'❌ Missed'):'—'}</span>
+        {idx<qs.length-1
+          ?<button className="btn-nav pri" onClick={()=>setIdx(i=>i+1)}>Next →</button>
+          :<button className="btn-nav pri" onClick={load}>Restart 🔄</button>}
+      </div>
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// MOCK TEST
+// ════════════════════════════════════════════════════════════════════
+const MockTest=({user})=>{
+  const [mode,setMode]=React.useState(null); // 'topic' | 'custom'
+  const [config,setConfig]=React.useState({topics:[],difficulty:'',count:100,time:120});
+  const [phase,setPhase]=React.useState('setup'); // setup | running | result
+  const [qs,setQs]=React.useState([]);
+  const [idx,setIdx]=React.useState(0);
+  const [answers,setAnswers]=React.useState({});
+  const [results,setResults]=React.useState(null);
+  const {data:topicsData}=useFetch(`${API}/topics`);
+  const topicNames=topicsData?Object.keys(topicsData):[];
+  const totalSecs=config.time*60;
+  const remaining=useCountdown(totalSecs,phase==='running');
+
+  React.useEffect(()=>{if(remaining===0&&phase==='running')finalize()},[remaining]);
+
+  const launch=async()=>{
+    const p=new URLSearchParams({limit:Math.min(config.count*2,500)});
+    if(mode==='topic'&&config.topics.length>0)p.set('topic',config.topics[0]);
+    if(mode==='custom'&&config.topics.length>0)p.set('topics',config.topics.join(','));
+    if(config.difficulty)p.set('difficulty',config.difficulty);
+    const d=await fetch(`${API}/questions?${p}`).then(r=>r.json());
+    let loaded=(d.questions||[]).sort(()=>Math.random()-0.5).slice(0,config.count);
+    if(!loaded.length){alert('No questions found. Try different settings.');return;}
+    setQs(loaded);setIdx(0);setAnswers({});setPhase('running');
+  };
+
+  const finalize=async()=>{
+    setPhase('result');
+    let correct=0,total=0;
+    const topicMap={};
+    const reviewList=[];
+    for(const q of qs){
+      const sel=answers[q.id];
+      const skipped=!sel;
+      const submitSel=sel||'skip';
+      const r=await fetch(`${API}/attempt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question_id:q.id,selected_option:submitSel,time_taken_sec:0})}).then(r=>r.json());
+      if(!skipped){
+        total++;
+        if(r.is_correct)correct++;
+        const t=q.topic||'Other';
+        if(!topicMap[t])topicMap[t]={att:0,cor:0};
+        topicMap[t].att++;if(r.is_correct)topicMap[t].cor++;
+      }
+      reviewList.push({q,sel:skipped?null:sel,is_correct:skipped?null:r.is_correct,correct_option:r.correct_option,ai_insight:r.ai_insight,skipped});
+    }
+    const mocks=S.get('mocks_done',0)+1;S.set('mocks_done',mocks);
+    setResults({correct,total,attempted:Object.keys(answers).length,skipped:qs.length-Object.keys(answers).length,topicMap,timeUsed:totalSecs-remaining,reviewList});
+  };
+
+  const [reviewFilter,setReviewFilter]=React.useState('all'); // all | wrong | correct | skipped
+  const [showReview,setShowReview]=React.useState(false);
+
+  if(phase==='result'&&results){
+    const pct=Math.round(results.correct/Math.max(results.total,1)*100);
+    const grade=pct>=85?{l:'Topper Level',c:'var(--green)'}:pct>=70?{l:'Good',c:'var(--accent)'}:pct>=50?{l:'Average',c:'var(--accent2)'}:{l:'Needs Work',c:'var(--red)'};
+    const filtered=(results.reviewList||[]).filter(r=>{
+      if(reviewFilter==='wrong')return r.is_correct===false;
+      if(reviewFilter==='correct')return r.is_correct===true;
+      if(reviewFilter==='skipped')return r.skipped;
+      return true;
+    });
+    return(
+      <div className="fade-in">
+        <div className="card" style={{marginBottom:16}}>
+          <div className="result-header">
+            <div className="result-score-ring"><Ring pct={pct} size={130} color={grade.c} label="Score"/></div>
+            <div className="result-score-sub">{results.correct} correct out of {results.total} attempted</div>
+            <span className="result-grade" style={{background:`${grade.c}18`,color:grade.c,border:`1px solid ${grade.c}30`}}>{grade.l}</span>
+          </div>
+          <div className="result-stats-grid">
+            {[{v:results.correct,l:'Correct',c:'var(--green)'},{v:results.total-results.correct,l:'Wrong',c:'var(--red)'},{v:results.skipped,l:'Skipped',c:'var(--muted)'},{v:`${pct}%`,l:'Score',c:grade.c},{v:fmt(results.timeUsed),l:'Time Used',c:'var(--blue)'},{v:qs.length,l:'Total Qs',c:'var(--muted)'}].map((s,i)=>(
+              <div key={i} className="rs-card"><div className="rs-val" style={{color:s.c}}>{s.v}</div><div className="rs-lbl">{s.l}</div></div>
+            ))}
+          </div>
+          <div className="section-lbl" style={{marginTop:16}}>Topic Breakdown</div>
+          {Object.entries(results.topicMap).map(([t,d])=>{
+            const tp=Math.round(d.cor/d.att*100);
+            return(
+              <div key={t} className="topic-result-row">
+                <div className="tr-topic">{t}</div>
+                <div className="tr-score">{d.cor}/{d.att}</div>
+                <div className="tr-pct" style={{color:tp>=70?'var(--green)':tp>=50?'var(--accent2)':'var(--red)'}}>{tp}%</div>
+              </div>
+            );
+          })}
+          <div style={{marginTop:16,display:'flex',gap:10,flexWrap:'wrap'}}>
+            <button className="btn-submit" onClick={()=>setShowReview(v=>!v)}>{showReview?'Hide':'Review'} Answers</button>
+            <button className="btn-sec" onClick={()=>{setPhase('setup');setMode(null);setResults(null);setShowReview(false)}}>New Mock Test</button>
+          </div>
+        </div>
+
+        {showReview&&(
+          <div className="fade-in">
+            <div style={{display:'flex',gap:8,marginBottom:14,flexWrap:'wrap'}}>
+              {[{id:'all',l:'All'},{id:'wrong',l:'Wrong Only'},{id:'correct',l:'Correct Only'},{id:'skipped',l:'Skipped'}].map(f=>(
+                <button key={f.id} className={`fchip ${reviewFilter===f.id?'on':''}`} onClick={()=>setReviewFilter(f.id)}>{f.l}</button>
+              ))}
+            </div>
+            {filtered.map((r,i)=>{
+              const optColor=(l)=>{
+                if(!r.skipped&&l===r.correct_option)return'var(--green)';
+                if(!r.skipped&&l===r.sel&&!r.is_correct)return'var(--red)';
+                return'var(--muted)';
+              };
+              return(
+                <div key={i} className="card" style={{marginBottom:12,borderLeft:`3px solid ${r.skipped?'var(--muted)':r.is_correct?'var(--green)':'var(--red)'}`}}>
+                  <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:8}}>
+                    <span style={{fontSize:'.75rem',fontWeight:700,color:'var(--muted)'}}>Q{i+1} — {r.q.topic||'General'}</span>
+                    <span style={{fontSize:'.75rem',fontWeight:700,padding:'2px 8px',borderRadius:6,
+                      background:r.skipped?'var(--surface2)':r.is_correct?'rgba(34,214,138,.12)':'rgba(255,92,92,.12)',
+                      color:r.skipped?'var(--muted)':r.is_correct?'var(--green)':'var(--red)'
+                    }}>{r.skipped?'Skipped':r.is_correct?'Correct':'Wrong'}</span>
+                  </div>
+                  <p style={{fontSize:'.9rem',lineHeight:1.6,marginBottom:10}}>{r.q.question}</p>
+                  <div style={{display:'grid',gap:6,marginBottom:10}}>
+                    {[['a',r.q.option_a],['b',r.q.option_b],['c',r.q.option_c],['d',r.q.option_d]].map(([l,t])=>(
+                      <div key={l} style={{display:'flex',gap:8,alignItems:'flex-start',fontSize:'.85rem',padding:'6px 10px',borderRadius:8,
+                        background:(!r.skipped&&l===r.correct_option)?'rgba(34,214,138,.08)':(!r.skipped&&l===r.sel&&!r.is_correct)?'rgba(255,92,92,.08)':'transparent',
+                        border:`1px solid ${(!r.skipped&&(l===r.correct_option||(l===r.sel&&!r.is_correct)))?optColor(l)+'30':'var(--border)'}`,
+                      }}>
+                        <span style={{fontWeight:700,color:optColor(l),minWidth:18}}>{l.toUpperCase()}</span>
+                        <span style={{color:optColor(l)!=='var(--muted)'?optColor(l):'var(--text)'}}>{t}</span>
+                        {!r.skipped&&l===r.correct_option&&<span style={{marginLeft:'auto',fontSize:'.75rem',color:'var(--green)'}}>Correct</span>}
+                        {!r.skipped&&l===r.sel&&!r.is_correct&&<span style={{marginLeft:'auto',fontSize:'.75rem',color:'var(--red)'}}>Your answer</span>}
+                      </div>
+                    ))}
+                  </div>
+                  {r.ai_insight&&(
+                    <div style={{background:'var(--surface2)',border:'1px solid var(--border)',borderRadius:10,padding:'12px 14px',fontSize:'.84rem',lineHeight:1.7,color:'var(--text)',whiteSpace:'pre-wrap'}}>
+                      <div style={{fontWeight:700,fontSize:'.75rem',color:'var(--accent)',marginBottom:6,textTransform:'uppercase',letterSpacing:'.5px'}}>AI Mentor Analysis</div>
+                      {r.ai_insight}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  if(phase==='running'){
+    const q=qs[idx];
+    const tc=remaining<300?'danger':remaining<600?'warn':'';
+    return(
+      <div className="mock-running fade-in">
+        <div className="mock-header">
+          <div>
+            <div className="mock-title">{mode==='topic'?`${config.topics[0]||'All Topics'} Mock`:'Custom Mock Test'}</div>
+            <div style={{fontSize:'.78rem',color:'var(--muted)',marginTop:2}}>Q{idx+1}/{qs.length} • Attempted: {Object.keys(answers).length}</div>
+          </div>
+          <div className={`mock-timer ${tc}`}>{fmt(remaining)}</div>
+          <button className="btn-submit-mock" onClick={finalize}>Submit Test ✓</button>
+        </div>
+
+        <div className="mock-q-grid">
+          {qs.map((_,i)=>(
+            <div key={i} className={`mq-dot ${i===idx?'cur':answers[qs[i]?.id]?'att':''}`} onClick={()=>setIdx(i)}>{i+1}</div>
+          ))}
+        </div>
+
+        {q&&(
+          <div className="q-card">
+            <Tags q={q}/>
+            <p className="q-text">{q.question}</p>
+            <div className="options">
+              {[['a',q.option_a],['b',q.option_b],['c',q.option_c],['d',q.option_d]].map(([l,t])=>(
+                <button key={l} className={`opt-btn ${answers[q.id]===l?'sel':''}`}
+                  onClick={()=>setAnswers(a=>({...a,[q.id]:l}))}>
+                  <span className="opt-lbl">{l.toUpperCase()}</span><span>{t}</span>
+                </button>
+              ))}
+            </div>
+            <div className="q-nav" style={{marginTop:14}}>
+              <button className="btn-nav" onClick={()=>setIdx(i=>i-1)} disabled={idx===0}>← Prev</button>
+              <button className="btn-nav pri" onClick={()=>{if(idx<qs.length-1)setIdx(i=>i+1);else finalize()}}>{idx<qs.length-1?'Next →':'Finish ✓'}</button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return(
+    <div className="fade-in">
+      <div className="mock-modes">
+        {[{id:'topic',icon:'📚',title:'Sectional Mock',desc:'100 Qs from one topic. Timed. Great for subject mastery.'},
+          {id:'custom',icon:'⚙️',title:'Custom Quiz',desc:'Mix topics, difficulty, years. Your terms, your test.'}
+        ].map(m=>(
+          <div key={m.id} className={`mock-mode-card ${mode===m.id?'sel':''}`} onClick={()=>setMode(m.id)}>
+            <div className="mock-mode-icon">{m.icon}</div>
+            <div className="mock-mode-title">{m.title}</div>
+            <div className="mock-mode-desc">{m.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      {mode&&(
+        <div className="mock-config">
+          <div className="mock-config-title">{mode==='topic'?'Choose Topic':'Customize Your Test'}</div>
+          {mode==='topic'?(
+            <div className="topic-grid">
+              {topicNames.map(t=>(
+                <button key={t} className={`topic-chip ${config.topics[0]===t?'on':''}`}
+                  onClick={()=>setConfig(c=>({...c,topics:[t],count:100}))}>
+                  {t}
+                </button>
+              ))}
+            </div>
+          ):(
+            <>
+              <div className="section-lbl">Select Topics (leave empty for all)</div>
+              <div className="topic-grid" style={{marginBottom:16}}>
+                {topicNames.map(t=>(
+                  <button key={t} className={`topic-chip ${config.topics.includes(t)?'on':''}`}
+                    onClick={()=>setConfig(c=>({...c,topics:c.topics.includes(t)?c.topics.filter(x=>x!==t):[...c.topics,t]}))}>
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+          <div className="mock-params">
+            <div className="form-group" style={{marginBottom:0}}>
+              <label className="form-label">Questions</label>
+              <select className="form-input form-select" value={config.count} onChange={e=>setConfig(c=>({...c,count:+e.target.value}))}>
+                {[25,50,75,100].map(n=><option key={n} value={n}>{n} Questions</option>)}
+              </select>
+            </div>
+            <div className="form-group" style={{marginBottom:0}}>
+              <label className="form-label">Time Limit</label>
+              <select className="form-input form-select" value={config.time} onChange={e=>setConfig(c=>({...c,time:+e.target.value}))}>
+                <option value={30}>30 min</option><option value={60}>1 hour</option>
+                <option value={120}>2 hours (UPSC)</option><option value={180}>3 hours</option>
+              </select>
+            </div>
+            <div className="form-group" style={{marginBottom:0}}>
+              <label className="form-label">Difficulty</label>
+              <select className="form-input form-select" value={config.difficulty} onChange={e=>setConfig(c=>({...c,difficulty:e.target.value}))}>
+                <option value="">Mixed</option><option value="easy">Easy</option>
+                <option value="medium">Medium</option><option value="hard">Hard</option>
+              </select>
+            </div>
+          </div>
+          <button className="btn-launch" onClick={launch} disabled={mode==='topic'&&!config.topics.length}>
+            🚀 Start Mock Test
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// CALENDAR
+// ════════════════════════════════════════════════════════════════════
+const CalendarView=({user})=>{
+  const log=S.get('daily_log',{});
+  const today=new Date();
+  const examDate=new Date(user.examDate||`${user.target}-05-24`);
+  const daysLeft=Math.ceil((examDate-today)/86400000);
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  // Generate months from current month to exam month
+  const months=[];
+  const start=new Date(today.getFullYear(),today.getMonth(),1);
+  const end=new Date(examDate.getFullYear(),examDate.getMonth()+1,1);
+  let cur=new Date(start);
+  while(cur<end&&months.length<12){
+    months.push(new Date(cur));
+    cur.setMonth(cur.getMonth()+1);
+  }
+
+  const getDayClass=(dateStr,dateObj)=>{
+    const isToday=dateStr===today.toISOString().slice(0,10);
+    const isFuture=dateObj>today;
+    if(isToday)return'today';
+    if(isFuture)return'future';
+    const entry=log[dateStr];
+    if(!entry)return'done-none';
+    if(entry.attempted>=entry.goal)return'done-full';
+    if(entry.attempted>0)return'done-part';
+    return'done-none';
+  };
+
+  // Stats
+  const activeDays=Object.keys(log).filter(d=>log[d].attempted>0).length;
+  const totalAtt=Object.values(log).reduce((s,d)=>s+d.attempted,0);
+  const totalCor=Object.values(log).reduce((s,d)=>s+d.correct,0);
+  const goalDays=Object.keys(log).filter(d=>log[d].attempted>=(log[d].goal||user.dailyGoal)).length;
+
+  return(
+    <div className="cal-wrap fade-in">
+      <div className="cal-stats-row">
+        {[{v:daysLeft,l:'Days to Exam',c:'var(--red)'},{v:activeDays,l:'Active Days',c:'var(--green)'},{v:goalDays,l:'Goal Met Days',c:'var(--accent)'},{v:totalAtt,l:'Total Attempted',c:'var(--accent2)'}].map((s,i)=>(
+          <div key={i} className="cal-stat"><div className="cal-stat-val" style={{color:s.c}}>{s.v}</div><div className="cal-stat-lbl">{s.l}</div></div>
+        ))}
+      </div>
+
+      <div className="cal-tip">
+        💡 <b>Study Plan:</b> With <b style={{color:'var(--accent2)'}}>{daysLeft} days</b> left, you need to attempt <b style={{color:'var(--accent)'}}>{Math.ceil((250-totalAtt)/Math.max(daysLeft,1))} Qs/day</b> to complete the question bank.
+        {totalCor>0&&<> Current accuracy: <b style={{color:'var(--green)'}}>{Math.round(totalCor/totalAtt*100)}%</b>.</>}
+      </div>
+
+      <div style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
+        <div className="cal-legend">
+          {[{c:'var(--green)',l:'Goal Met'},{c:'var(--accent2)',l:'Partial'},{c:'var(--red)',l:'Missed'},{c:'var(--accent)',l:'Today'}].map((x,i)=>(
+            <div key={i} className="cal-legend-item"><div className="cal-legend-dot" style={{background:x.c}}/>{x.l}</div>
+          ))}
+        </div>
+      </div>
+
+      {months.map((mDate,mi)=>{
+        const yr=mDate.getFullYear(),mo=mDate.getMonth();
+        const firstDay=new Date(yr,mo,1).getDay();
+        const daysInMonth=new Date(yr,mo+1,0).getDate();
+        const cells=[];
+        for(let i=0;i<firstDay;i++)cells.push(null);
+        for(let d=1;d<=daysInMonth;d++)cells.push(d);
+        while(cells.length%7!==0)cells.push(null);
+
+        return(
+          <div key={mi} className="cal-month">
+            <div className="cal-month-title">
+              <span>{MONTHS[mo]} {yr}</span>
+              {mi===0&&<span style={{fontSize:'.75rem',color:'var(--muted)'}}>← Current Month</span>}
+              {mDate.getMonth()===examDate.getMonth()&&mDate.getFullYear()===examDate.getFullYear()&&
+                <span style={{fontSize:'.75rem',color:'var(--red)'}}>📅 Exam Month</span>}
+            </div>
+            <div className="cal-grid">
+              {DAYS.map(d=><div key={d} className="cal-day-hdr">{d}</div>)}
+              {cells.map((day,i)=>{
+                if(!day)return<div key={i} className="cal-day empty"/>;
+                const dateStr=`${yr}-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+                const dateObj=new Date(yr,mo,day);
+                const cls=getDayClass(dateStr,dateObj);
+                const entry=log[dateStr];
+                const isExam=dateStr===examDate.toISOString().slice(0,10);
+                return(
+                  <div key={i} className={`cal-day ${cls}`} title={entry?`${entry.attempted} Qs, ${entry.correct} correct`:''}>
+                    <div className="cal-day-num" style={isExam?{color:'var(--red)',fontWeight:900}:{}}>{day}{isExam?'🎯':''}</div>
+                    {entry&&<div className="cal-dot"/>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// CHALLENGE MODAL
+// ════════════════════════════════════════════════════════════════════
+const ChallengeModal=({user,onClose})=>{
+  const [phone,setPhone]=React.useState('');
+  const [topic,setTopic]=React.useState('');
+  const [count,setCount]=React.useState('20');
+  const [toast,setToast]=React.useState(false);
+  const {data:topics}=useFetch(`${API}/topics`);
+  const topicNames=topics?Object.keys(topics):[];
+
+  const quizParams=`topic=${encodeURIComponent(topic||'All Topics')}&count=${count}&from=${encodeURIComponent(user.name)}`;
+  const appUrl=`${window.location.origin}${window.location.pathname}?challenge=1&${quizParams}`;
+  const msg=`🎯 UPSC Challenge from ${user.name}!%0A%0ATake this ${topic||'All Topics'} Quiz (${count} questions) and beat my score! 📚%0A%0ALink: ${encodeURIComponent(appUrl)}%0A%0AGood luck! 🇮🇳`;
+  const waLink=`https://wa.me/${phone.replace(/\D/g,'')}?text=${msg}`;
+
+  const copyLink=()=>{navigator.clipboard.writeText(appUrl).then(()=>{setToast(true);setTimeout(()=>setToast(false),2500)})};
+
+  return(
+    <>
+      <div className="modal-overlay" onClick={onClose}>
+        <div className="modal" onClick={e=>e.stopPropagation()} style={{position:'relative'}}>
+          <button className="modal-close" onClick={onClose}>✕</button>
+          <div className="modal-title">📲 Challenge a Friend</div>
+          <div className="modal-sub">Send a UPSC quiz challenge via WhatsApp. Your friend opens the link and attempts the same quiz!</div>
+
+          <div className="form-group">
+            <label className="form-label">Friend's WhatsApp Number</label>
+            <input className="form-input" type="tel" placeholder="+91 9876543210" value={phone} onChange={e=>setPhone(e.target.value)}/>
+          </div>
+          <div className="form-group">
+            <label className="form-label">Quiz Topic</label>
+            <select className="form-input form-select" value={topic} onChange={e=>setTopic(e.target.value)}>
+              <option value="">All Topics (Mixed)</option>
+              {topicNames.map(t=><option key={t} value={t}>{t}</option>)}
+            </select>
+          </div>
+          <div className="form-group">
+            <label className="form-label">Number of Questions</label>
+            <select className="form-input form-select" value={count} onChange={e=>setCount(e.target.value)}>
+              {['10','20','30','50'].map(n=><option key={n} value={n}>{n} Questions</option>)}
+            </select>
+          </div>
+
+          <div style={{background:'var(--surface2)',border:'1px solid var(--border)',borderRadius:10,padding:'10px 14px',fontSize:'.8rem',color:'var(--muted)',marginBottom:14,wordBreak:'break-all'}}>
+            🔗 {appUrl.length>60?appUrl.slice(0,60)+'…':appUrl}
+          </div>
+
+          <a className="wa-btn" href={phone?waLink:'#'} target="_blank" rel="noopener" onClick={e=>{if(!phone){e.preventDefault();alert('Please enter a phone number!')}}} style={{textDecoration:'none'}}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Send on WhatsApp
+          </a>
+          <button className="btn-sec" style={{width:'100%',marginTop:8,justifyContent:'center'}} onClick={copyLink}>📋 Copy Link</button>
+        </div>
+      </div>
+      {toast&&<div className="copied-toast">✅ Link copied to clipboard!</div>}
+    </>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// STATS
+// ════════════════════════════════════════════════════════════════════
+const StatsView=()=>{
+  const {data,loading}=useFetch(`${API}/stats`);
+  if(loading)return<div className="empty-state"><Spin/></div>;
+  const {overall={},by_topic_performance=[],db_summary=[]}=data||{};
+  const pColor=p=>p>=75?'var(--green)':p>=50?'var(--accent2)':'var(--red)';
+  return(
+    <div className="fade-in">
+      <div className="stats-row" style={{marginBottom:20}}>
+        {[{icon:'📊',v:`${overall.accuracy_pct||0}%`,l:'Accuracy',c:'var(--accent)'},{icon:'✅',v:overall.total_correct||0,l:'Correct',c:'var(--green)'},{icon:'❌',v:(overall.total_attempted||0)-(overall.total_correct||0),l:'Wrong',c:'var(--red)'},{icon:'⏱',v:`${Math.round(overall.avg_time_sec||0)}s`,l:'Avg Time',c:'var(--blue)'}].map((s,i)=>(
+          <div key={i} className="stat-card"><div className="stat-icon">{s.icon}</div><div className="stat-val" style={{color:s.c}}>{s.v}</div><div className="stat-lbl">{s.l}</div></div>
+        ))}
+      </div>
+      <div className="card" style={{marginBottom:16}}>
+        <div className="card-title">Topic Performance</div>
+        {by_topic_performance.length===0?<div style={{color:'var(--muted)',fontSize:'.84rem',padding:'8px 0'}}>No attempts yet. Start practicing!</div>:
+        <table className="perf-table">
+          <thead><tr><th>Topic</th><th>Subtopic</th><th>Att.</th><th>Correct</th><th>Accuracy</th></tr></thead>
+          <tbody>{by_topic_performance.map((t,i)=>(
+            <tr key={i}><td style={{fontWeight:600}}>{t.topic}</td><td style={{color:'var(--muted)'}}>{t.subtopic}</td><td>{t.total_attempted}</td><td style={{color:'var(--green)'}}>{t.total_correct}</td>
+            <td><span style={{color:pColor(t.accuracy_pct),fontWeight:700}}>{t.accuracy_pct}%</span>
+              <span className="acc-bar-wrap"><span className="acc-bar"><span className="acc-bar-fill" style={{width:`${t.accuracy_pct}%`,height:'100%',display:'block',background:pColor(t.accuracy_pct)}}/></span></span>
+            </td></tr>
+          ))}</tbody>
+        </table>}
+      </div>
+      <div className="card">
+        <div className="card-title">Question Bank Summary</div>
+        <table className="perf-table">
+          <thead><tr><th>Topic</th><th>Total Qs</th><th>Repeated</th><th>Avg Freq</th></tr></thead>
+          <tbody>{db_summary.map((t,i)=>(
+            <tr key={i}><td style={{fontWeight:600}}>{t.topic}</td><td>{t.q_count}</td><td style={{color:'var(--green)'}}>{t.repeated_count}</td><td>{t.avg_frequency}×</td></tr>
+          ))}</tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// REPEATED
+// ════════════════════════════════════════════════════════════════════
+const RepeatedView=()=>{
+  const {data,loading}=useFetch(`${API}/questions/repeated?limit=100`);
+  if(loading)return<div className="empty-state"><Spin/></div>;
+  const qs=data?.questions||[];
+  return(
+    <div className="fade-in">
+      <div style={{background:'linear-gradient(135deg,rgba(245,166,35,.1),rgba(255,215,0,.05))',border:'1px solid rgba(245,166,35,.2)',borderRadius:'12px',padding:'16px 20px',marginBottom:18}}>
+        <b>⚡ {qs.length} High-Priority Questions</b>
+        <div style={{fontSize:'.83rem',color:'var(--muted)',marginTop:4,lineHeight:1.6}}>These questions appeared in multiple UPSC years. Mastering them gives the highest ROI.</div>
+      </div>
+      {qs.map((q,i)=>(
+        <div key={q.id} className="rep-card" style={{animationDelay:`${i*.025}s`}}>
+          <div className="q-meta" style={{marginBottom:7}}>
+            {q.topic&&<span className="tag t-topic">{q.topic}</span>}
+            <span className="tag t-rep">⟳ {q.frequency}× in UPSC</span>
+            {(q.year_tags||[]).map(y=><span key={y} className="tag t-yr">{y}</span>)}
+          </div>
+          <div className="rep-q">{q.question}</div>
+          <div style={{display:'grid',gap:5,marginTop:10}}>
+            {[['a',q.option_a],['b',q.option_b],['c',q.option_c],['d',q.option_d]].filter(([,t])=>t).map(([l,t])=>(
+              <div key={l} style={{display:'flex',gap:8,fontSize:'.84rem',color:'var(--muted)',alignItems:'flex-start'}}>
+                <span style={{fontWeight:700,minWidth:16}}>({l})</span><span>{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// BOOKMARKS
+// ════════════════════════════════════════════════════════════════════
+const BookmarksView=()=>{
+  const ids=S.get('bookmarks',[]);
+  const [qs,setQs]=React.useState([]);
+  React.useEffect(()=>{
+    if(!ids.length)return;
+    Promise.all(ids.map(id=>fetch(`${API}/questions/${id}`).then(r=>r.json()))).then(setQs);
+  },[]);
+  if(!ids.length)return<div className="empty-state"><div className="empty-icon">🔖</div><div>No bookmarks. Hit 📌 on any question to save it.</div></div>;
+  return(
+    <div className="fade-in">
+      {qs.filter(q=>q?.id).map(q=>(
+        <div key={q.id} className="rep-card"><Tags q={q}/><div className="rep-q">{q.question}</div></div>
+      ))}
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+// SIDEBAR CONTENT (reused in drawer)
+// ════════════════════════════════════════════════════════════════════
+const SidebarContent=({user,view,go,theme,toggleTheme,onLogout,onClose})=>(
+  <>
+    <div className="sidebar-logo">
+      <div className="logo-text">UPSC Aspirant</div>
+      <div className="logo-sub">GS Paper I · Beta</div>
+    </div>
+    <div className="sidebar-user">
+      <div className="avatar">{user.name[0].toUpperCase()}</div>
+      <div><div className="user-name">{user.name.split(' ')[0]}</div><div className="user-target">CSE {user.target}</div></div>
+    </div>
+    {[{id:'dashboard',icon:'🏠',l:'Dashboard'},{id:'practice',icon:'📝',l:'Practice'},{id:'mock',icon:'📋',l:'Mock Tests'},/* {id:'repeated',icon:'⟳',l:'Repeated Qs'}, // disabled until extraction quality fixed */{id:'calendar',icon:'📅',l:'Study Calendar'},{id:'stats',icon:'📊',l:'My Progress'},{id:'bookmarks',icon:'🔖',l:'Bookmarks'},{id:'challenge',icon:'📲',l:'Challenge Friend'}].map(n=>(
+      <button key={n.id} className={`nav-item ${view===n.id?'active':''}`} onClick={()=>{go(n.id);if(onClose)onClose()}}>
+        <span className="nav-icon">{n.icon}</span>{n.l}
+      </button>
+    ))}
+    <div className="sidebar-bottom">
+      <div className="streak-pill">
+        <div style={{fontSize:'1.4rem',display:'inline-block',animation:'bounce 2s ease infinite'}}>🔥</div>
+        <div className="streak-val">{user.streak||0}</div>
+        <div className="streak-lbl">Day Streak</div>
+      </div>
+      <button className="theme-toggle" onClick={toggleTheme}>
+        <span className="nav-icon">{theme==='dark'?'☀️':'🌙'}</span>
+        {theme==='dark'?'Light Mode':'Dark Mode'}
+        <div style={{marginLeft:'auto'}}><div className={`toggle-track ${theme==='light'?'on':''}`}><div className={`toggle-thumb ${theme==='light'?'on':''}`}/></div></div>
+      </button>
+      <button className="nav-item" style={{color:'var(--red)'}} onClick={onLogout}><span className="nav-icon">🚪</span>Sign Out</button>
+    </div>
+  </>
+);
+
+// ════════════════════════════════════════════════════════════════════
+// APP
+// ════════════════════════════════════════════════════════════════════
+const App=()=>{
+  const [user,setUser]=React.useState(()=>S.get('upsc_user',null));
+  const [view,setView]=React.useState('dashboard');
+  const [theme,setTheme]=React.useState(()=>S.get('theme','dark'));
+  const [drawerOpen,setDrawerOpen]=React.useState(false);
+  const [showChallenge,setShowChallenge]=React.useState(false);
+  const [quickPractice,setQuickPractice]=React.useState(false);
+
+  React.useEffect(()=>{document.documentElement.setAttribute('data-theme',theme);S.set('theme',theme)},[theme]);
+
+  // Handle challenge link
+  React.useEffect(()=>{
+    const p=new URLSearchParams(window.location.search);
+    if(p.get('challenge')==='1')setView('practice');
+  },[]);
+
+  if(!user)return<><div className="stars-bg"/><LoginPage onLogin={u=>{setUser(u);setView('dashboard')}}/></>;
+
+  const go=(v)=>{if(v==='challenge')setShowChallenge(true);else if(v==='quickpractice'){setQuickPractice(true);setView('practice');}else{setQuickPractice(false);setView(v);}};
+
+  const PAGE_TITLES={dashboard:{t:'Dashboard',s:'Your UPSC preparation at a glance'},practice:{t:'Practice',s:'GS Paper I · Previous Year Questions with AI Analysis'},mock:{t:'Mock Tests',s:'Timed mock tests — Topic-wise or Custom'},repeated:{t:'High-Priority Questions',s:'Questions UPSC has repeated across multiple years'},calendar:{t:'Study Calendar',s:`Daily targets till ${user.examDate||`${user.target}-05-24`}`},stats:{t:'My Progress',s:'Topic-wise performance analysis'},bookmarks:{t:'Bookmarks',s:'Questions you saved for later'}};
+  const pt=PAGE_TITLES[view]||{t:'',s:''};
+
+  return(
+    <div>
+      <div className="stars-bg"/>
+      <div className="app-wrap">
+        {/* Desktop sidebar */}
+        <aside className="sidebar">
+          <SidebarContent user={user} view={view} go={go} theme={theme} toggleTheme={()=>setTheme(t=>t==='dark'?'light':'dark')} onLogout={()=>{S.set('upsc_user',null);setUser(null)}}/>
+        </aside>
+
+        {/* Mobile drawer */}
+        {drawerOpen&&<div className="drawer-overlay open" onClick={()=>setDrawerOpen(false)}><div className="drawer" onClick={e=>e.stopPropagation()}><SidebarContent user={user} view={view} go={go} theme={theme} toggleTheme={()=>setTheme(t=>t==='dark'?'light':'dark')} onLogout={()=>{S.set('upsc_user',null);setUser(null)}} onClose={()=>setDrawerOpen(false)}/></div></div>}
+
+        <div style={{flex:1,display:'flex',flexDirection:'column',minWidth:0}}>
+          {/* Mobile header */}
+          <div className="mobile-header">
+            <button className="hamburger" onClick={()=>setDrawerOpen(true)}>☰</button>
+            <div className="mobile-logo">UPSC Aspirant</div>
+            <button className="hamburger" onClick={()=>setTheme(t=>t==='dark'?'light':'dark')}>{theme==='dark'?'☀️':'🌙'}</button>
+          </div>
+
+          <main className="main-content">
+            <div className="page-header"><h1 className="page-title">{pt.t}</h1><p className="page-sub">{pt.s}</p></div>
+            {view==='dashboard'&&<Dashboard user={user} go={go}/>}
+            {view==='practice'&&<QuizView user={user} onAttempt={()=>{}} quickMode={quickPractice} onExitQuick={()=>setQuickPractice(false)}/>}
+            {view==='mock'&&<MockTest user={user}/>}
+            {view==='repeated'&&<RepeatedView/>}
+            {view==='calendar'&&<CalendarView user={user}/>}
+            {view==='stats'&&<StatsView/>}
+            {view==='bookmarks'&&<BookmarksView/>}
+          </main>
+        </div>
+      </div>
+
+      {/* Bottom nav (mobile) */}
+      <nav className="bottom-nav">
+        <div className="bottom-nav-inner">
+          {[{id:'dashboard',icon:'🏠',l:'Home'},{id:'practice',icon:'📝',l:'Practice'},{id:'mock',icon:'📋',l:'Mock'},{id:'calendar',icon:'📅',l:'Calendar'},{id:'stats',icon:'📊',l:'Stats'}].map(n=>(
+            <button key={n.id} className={`bottom-nav-item ${view===n.id?'active':''}`} onClick={()=>go(n.id)}>
+              <span className="bottom-nav-icon">{n.icon}</span>{n.l}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      {/* Challenge modal */}
+      {showChallenge&&<ChallengeModal user={user} onClose={()=>setShowChallenge(false)}/>}
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
