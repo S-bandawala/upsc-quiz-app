@@ -1,207 +1,87 @@
 [
   {
-    "year": 2017,
-    "q_num": 58,
-    "reason": "missing_options:D"
+    "year": 2015,
+    "q_num": 98,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2023,
+    "year": 2015,
+    "q_num": 99,
+    "reason": "re-extraction_failed"
+  },
+  {
+    "year": 2015,
     "q_num": 100,
-    "reason": "missing_options:D"
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2020,
-    "q_num": 18,
-    "reason": "missing_options:D"
+    "year": 2017,
+    "q_num": 37,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2020,
-    "q_num": 49,
-    "reason": "missing_options:D"
+    "year": 2017,
+    "q_num": 74,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2020,
-    "q_num": 66,
-    "reason": "missing_options:A|B|C|D"
+    "year": 2018,
+    "q_num": 67,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2020,
-    "q_num": 80,
-    "reason": "missing_options:D"
-  },
-  {
-    "year": 2020,
-    "q_num": 83,
-    "reason": "missing_options:D"
+    "year": 2018,
+    "q_num": 72,
+    "reason": "re-extraction_failed"
   },
   {
     "year": 2019,
     "q_num": 43,
-    "reason": "missing_options:A|B|C|D"
-  },
-  {
-    "year": 2019,
-    "q_num": 52,
-    "reason": "missing_options:B|C|D"
+    "reason": "re-extraction_failed"
   },
   {
     "year": 2019,
     "q_num": 93,
-    "reason": "missing_options:C|D"
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2018,
-    "q_num": 35,
-    "reason": "missing_options:D"
+    "year": 2020,
+    "q_num": 49,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2018,
-    "q_num": 36,
-    "reason": "missing_options:D"
+    "year": 2020,
+    "q_num": 54,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2017,
-    "q_num": 60,
-    "reason": "missing_options:D"
+    "year": 2020,
+    "q_num": 56,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2017,
-    "q_num": 61,
-    "reason": "missing_options:C|D"
+    "year": 2020,
+    "q_num": 80,
+    "reason": "re-extraction_failed"
   },
   {
-    "year": 2016,
-    "q_num": 8,
-    "reason": "missing_options:C|D"
+    "year": 2020,
+    "q_num": 83,
+    "reason": "re-extraction_failed"
+  },
+  {
+    "year": 2022,
+    "q_num": 79,
+    "reason": "re-extraction_failed"
+  },
+  {
+    "year": 2023,
+    "q_num": 80,
+    "reason": "re-extraction_failed"
   },
   {
     "year": 2015,
     "q_num": 1,
     "reason": "instructions_page"
-  },
-  {
-    "year": 2015,
-    "q_num": 98,
-    "reason": "missing_options:B|C"
-  },
-  {
-    "year": 2015,
-    "q_num": 99,
-    "reason": "missing_options:D"
-  },
-  {
-    "year": 2015,
-    "q_num": 100,
-    "reason": "missing_options:D"
-  },
-  {
-    "year": 2023,
-    "q_num": 80,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2023,
-    "q_num": 95,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2023,
-    "q_num": 96,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2023,
-    "q_num": 91,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2022,
-    "q_num": 44,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2022,
-    "q_num": 79,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2021,
-    "q_num": 51,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2020,
-    "q_num": 54,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2020,
-    "q_num": 56,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2020,
-    "q_num": 93,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2020,
-    "q_num": 91,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2020,
-    "q_num": 94,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2020,
-    "q_num": 95,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2018,
-    "q_num": 67,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2018,
-    "q_num": 72,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2017,
-    "q_num": 74,
-    "reason": "statements_as_options"
-  },
-  {
-    "year": 2017,
-    "q_num": 37,
-    "reason": "truncated_question"
-  },
-  {
-    "year": 2021,
-    "q_num": 7,
-    "reason": "truncated_question"
-  },
-  {
-    "year": 2023,
-    "q_num": 14,
-    "reason": "truncated_question"
-  },
-  {
-    "year": 2023,
-    "q_num": 99,
-    "reason": "truncated_question"
-  },
-  {
-    "year": 2020,
-    "q_num": 92,
-    "reason": "truncated_question"
-  },
-  {
-    "year": 2018,
-    "q_num": 34,
-    "reason": "truncated_question"
   }
 ]

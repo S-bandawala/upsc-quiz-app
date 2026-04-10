@@ -1,0 +1,2582 @@
+{
+  "total_verified": 99,
+  "changes_count": 89,
+  "new_count": 5,
+  "daily_limit_hit": true,
+  "changes": [
+    {
+      "year": 2015,
+      "q_num": 2,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The Rowlatt Satyagraha, Gandhi made an attempt to use the Home Rule League",
+          "new": "With reference to the Fourteenth Finance Commission, which of the following stat"
+        },
+        {
+          "field": "option_a",
+          "old": "1",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "3",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 or 3",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 3,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Hal ho hi me samacharon me aayi 'Fortaleza Declaration' nimnalikhit me se kiske ",
+          "new": "The 'Fortaleza Declaration', recently in the news, is related to the affairs of\n"
+        },
+        {
+          "field": "option_a",
+          "old": "ASEAN",
+          "new": "(a) ASEAN"
+        },
+        {
+          "field": "option_b",
+          "old": "BRICS",
+          "new": "(b) BRICS"
+        },
+        {
+          "field": "option_c",
+          "old": "OECD",
+          "new": "(c) OECD"
+        },
+        {
+          "field": "option_d",
+          "old": "WTO",
+          "new": "(d) WTO"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 5,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Ushnakatibandhiya (Tropical) akshansho me dakshini Atlantic aur dakshini-purvi P",
+          "new": "In the South Atlantic and South-Eastern Pacific regions in tropical latitudes, c"
+        },
+        {
+          "field": "option_a",
+          "old": "Samudri pashth ke tap nimn hote hai",
+          "new": "(a) Sea surface temperatures are low"
+        },
+        {
+          "field": "option_b",
+          "old": "Ant-Ushakatibandhiya abhisari kshetr (Inter-Tropical Convergence Zone) bilkul hi hota hai",
+          "new": "(b) Inter-Tropical Convergence Zone seldom occurs"
+        },
+        {
+          "field": "option_c",
+          "old": "Koriolis bal atyant durbal hota hai",
+          "new": "(c) Coriolis force is too weak"
+        },
+        {
+          "field": "option_d",
+          "old": "Un kshetron me bhoomi maujood nhi hoti",
+          "new": "(d) Absence of land in those regions"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 6,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Bharat ke rajyon ka nimnalikhit me se kaun-sa ek yum, sabse purva aur sabse pasc",
+          "new": "Which one of the following pairs of States of India indicates the easternmost an"
+        },
+        {
+          "field": "option_a",
+          "old": "Assam aur Rajasthan",
+          "new": "(a) Assam and Rajasthan"
+        },
+        {
+          "field": "option_b",
+          "old": "Arunachal Pradesh aur Rajasthan",
+          "new": "(b) Arunachal Pradesh and Rajasthan"
+        },
+        {
+          "field": "option_c",
+          "old": "Assam aur Gujarat",
+          "new": "(c) Assam and Gujarat"
+        },
+        {
+          "field": "option_d",
+          "old": "Arunachal Pradesh aur Gujarat",
+          "new": "(d) Arunachal Pradesh and Gujarat"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 7,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Rajya ki neeti ke nirdeshak tatvon ke bare me nimnalikhit kathnon par vichar kij",
+          "new": "Consider the following statements regarding the Directive Principles of State Po"
+        },
+        {
+          "field": "option_a",
+          "old": "Kewal 1",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "Kewal 2",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 aur 2 donon",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Nahi 1 aur nahi 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 8,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "In the Index of Eight Core Industries', which one of the following is given the ",
+          "new": "In the 'Index of Eight Core Industries', which one of the following is given the"
+        },
+        {
+          "field": "option_a",
+          "old": "Coal production",
+          "new": "(a) Coal production"
+        },
+        {
+          "field": "option_b",
+          "old": "Electricity generation",
+          "new": "(b) Electricity generation"
+        },
+        {
+          "field": "option_c",
+          "old": "Fertilizer production",
+          "new": "(c) Fertilizer production"
+        },
+        {
+          "field": "option_d",
+          "old": "Steel production",
+          "new": "(d) Steel production"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 9,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Bhitarkanika National Park",
+          "new": "(a) Bhitarkanika National Park"
+        },
+        {
+          "field": "option_b",
+          "old": "Keibul Lamjao National Park",
+          "new": "(b) Keibul Lamjao National Park"
+        },
+        {
+          "field": "option_c",
+          "old": "Keoladeo Ghana National Park",
+          "new": "(c) Keoladeo Ghana National Park"
+        },
+        {
+          "field": "option_d",
+          "old": "Sultanpur National Park",
+          "new": "(d) Sultanpur National Park"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 10,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 11,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "1 and 3 only",
+          "new": "(a) 1 and 3 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "2 and 3 only",
+          "new": "(c) 2 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 12,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 13,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The Fair and Remunerative Price (FRP) of sugarcane is approved by the",
+          "new": "The Fair and Remunerative Price (FRP) of sugarcane is approved by the\n\n(a) Cabin"
+        },
+        {
+          "field": "option_a",
+          "old": "Cabinet Committee on Economic Affairs",
+          "new": "(a) Cabinet Committee on Economic Affairs"
+        },
+        {
+          "field": "option_b",
+          "old": "Commission for Agricultural Costs and Prices",
+          "new": "(b) Commission for Agricultural Costs and Prices"
+        },
+        {
+          "field": "option_c",
+          "old": "Directorate of Marketing and Inspection, Ministry of Agriculture",
+          "new": "(c) Directorate of Marketing and Inspection, Ministry of Agriculture"
+        },
+        {
+          "field": "option_d",
+          "old": "Agricultural Produce Market Committee",
+          "new": "(d) Agricultural Produce Market Committee"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 14,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "What explains the eastward flow of the equatorial counter-current?",
+          "new": "14. What explains the eastward flow of the equatorial counter-current?\n\n(a) The "
+        },
+        {
+          "field": "option_a",
+          "old": "The Earth's rotation on its axis",
+          "new": "(a) The Earth's rotation on its axis"
+        },
+        {
+          "field": "option_b",
+          "old": "Convergence of the two equatorial currents",
+          "new": "(b) Convergence of the two equatorial currents"
+        },
+        {
+          "field": "option_c",
+          "old": "Difference in salinity of water",
+          "new": "(c) Difference in salinity of water"
+        },
+        {
+          "field": "option_d",
+          "old": "Occurrence of the belt of calm near the equator",
+          "new": "(d) Occurrence of the belt of calm near the equator"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 15,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following pairs :\nPlace of Pilgrimage   Location\n1. Srisailam   :  ",
+          "new": "15. Consider the following pairs :\n\nPlace of Pilgrimage Location\n\n1. Srisailam :"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 16,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to Rowlatt Satyagraha, which of the following statements is/are c",
+          "new": "16. With reference to Rowlatt Satyagraha, which of the following statements is/a"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 1 and 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3",
+          "new": "(c) 2 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "3 only",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 17,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Among the following, which were frequently mentioned in the news for the outbrea",
+          "new": "17. Among the following, which were frequently mentioned in the news for the out"
+        },
+        {
+          "field": "option_a",
+          "old": "Syria and Jordan",
+          "new": "(a) Syria and Jordan"
+        },
+        {
+          "field": "option_b",
+          "old": "Guinea, Sierra Leone and Liberia",
+          "new": "(b) Guinea, Sierra Leone and Liberia"
+        },
+        {
+          "field": "option_c",
+          "old": "Philippines and Papua New Guinea",
+          "new": "(c) Philippines and Papua New Guinea"
+        },
+        {
+          "field": "option_d",
+          "old": "Jamaica, Haiti and Surinam",
+          "new": "(d) Jamaica, Haiti and Surinam"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 18,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to 'fly ash' produced by the power plants using coal as fuel, whi",
+          "new": "18. With reference to 'fly ash' produced by the power plants using coal as fuel,"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2",
+          "new": "(a) 1 and 2"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3",
+          "new": "(c) 1 and 3"
+        },
+        {
+          "field": "option_d",
+          "old": "3 only",
+          "new": "(d) 3 only"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 19,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to 'dugong', a mammal found in India, which of the following stat",
+          "new": "With reference to 'dugong', a mammal found in India, which of the following stat"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2",
+          "new": "(a) 1 and 2"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3",
+          "new": "(c) 1 and 3"
+        },
+        {
+          "field": "option_d",
+          "old": "3 only",
+          "new": "(d) 3 only"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 20,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Who of the following was/were economic critic/critics of colonialism in India? 1",
+          "new": "Who of the following was/were economic critic/critics of colonialism in India?\n1"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "1 and 2 only",
+          "new": "(b) 1 and 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "2 and 3 only",
+          "new": "(c) 2 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 21,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following issues the 'Global Economic Prospects' report periodi",
+          "new": "Which one of the following issues the 'Global Economic Prospects' report periodi"
+        },
+        {
+          "field": "option_a",
+          "old": "The Asian Development Bank",
+          "new": "(a) The Asian Development Bank"
+        },
+        {
+          "field": "option_b",
+          "old": "The European Bank for Reconstruction and Development",
+          "new": "(b) The European Bank for Reconstruction and Development"
+        },
+        {
+          "field": "option_c",
+          "old": "The US Federal Reserve Bank",
+          "new": "(c) The US Federal Reserve Bank"
+        },
+        {
+          "field": "option_d",
+          "old": "The World Bank",
+          "new": "(d) The World Bank"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 22,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "When the Reserve Bank of India reduces the Statutory Liquidity Ratio by 50 basis",
+          "new": "When the Reserve Bank of India reduces the Statutory Liquidity Ratio by 50 basis"
+        },
+        {
+          "field": "option_a",
+          "old": "India's GDP growth rate increases drastically",
+          "new": "(a) India's GDP growth rate increases drastically"
+        },
+        {
+          "field": "option_b",
+          "old": "Foreign Institutional Investors may bring more capital into our country",
+          "new": "(b) Foreign Institutional Investors may bring more capital into our country"
+        },
+        {
+          "field": "option_c",
+          "old": "Scheduled Commercial Banks may cut their lending rates",
+          "new": "(c) Scheduled Commercial Banks may cut their lending rates"
+        },
+        {
+          "field": "option_d",
+          "old": "It may drastically reduce the liquidity to the banking system",
+          "new": "(d) It may drastically reduce the liquidity to the banking system"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 23,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to the use of nano-technology in health sector, which of the foll",
+          "new": "With reference to the use of nano-technology in health sector, which of the foll"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 24,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "In India, markets in agricultural products are regulated under the",
+          "new": "In India, markets in agricultural products are regulated under the\n(a) Essential"
+        },
+        {
+          "field": "option_a",
+          "old": "Essential Commodities Act, 1955",
+          "new": "(a) Essential Commodities Act, 1955"
+        },
+        {
+          "field": "option_b",
+          "old": "Agricultural Produce Market Committee Act enacted by States",
+          "new": "(b) Agricultural Produce Market Committee Act enacted by States"
+        },
+        {
+          "field": "option_c",
+          "old": "Agricultural Produce (Grading and Marking) Act, 1937",
+          "new": "(c) Agricultural Produce (Grading and Marking) Act, 1937"
+        },
+        {
+          "field": "option_d",
+          "old": "Food Products Order, 1956 and Meat and Food Products Order, 1973",
+          "new": "(d) Food Products Order, 1956 and Meat and Food Products Order, 1973"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 25,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following is the national aquatic animal of India?",
+          "new": "Which one of the following is the national aquatic animal of India?\n(a) Saltwate"
+        },
+        {
+          "field": "option_a",
+          "old": "Saltwater crocodile",
+          "new": "(a) Saltwater crocodile"
+        },
+        {
+          "field": "option_b",
+          "old": "Olive ridley turtle",
+          "new": "(b) Olive ridley turtle"
+        },
+        {
+          "field": "option_c",
+          "old": "Ganges dolphin",
+          "new": "(c) Gangetic dolphin"
+        },
+        {
+          "field": "option_d",
+          "old": "Gharial",
+          "new": "(d) Gharial"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 26,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to Congress Socialist Party, consider the following statements : ",
+          "new": "With reference to Congress Socialist Party, consider the following statements :\n"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2 only",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "3 only",
+          "new": "(b) 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1, 2 and 3",
+          "new": "(c) 1, 2 and 3"
+        },
+        {
+          "field": "option_d",
+          "old": "None",
+          "new": "(d) None"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 27,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following statements : 1. The Rajya Sabha has no power either to re",
+          "new": "Consider the following statements :\n1. The Rajya Sabha has no power either to re"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "1 and 2 only",
+          "new": "(b) 1 and 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "2 and 3 only",
+          "new": "(c) 2 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 28,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "the separation of power between the judiciary and the legislature",
+          "new": "(a) the separation of power between the judiciary and the legislature"
+        },
+        {
+          "field": "option_b",
+          "old": "the jurisdiction of the central and provincial governments",
+          "new": "(b) the jurisdiction of the central and provincial governments"
+        },
+        {
+          "field": "option_c",
+          "old": "the powers of the Secretary of State for India and the Viceroy",
+          "new": "(c) the powers of the Secretary of State for India and the Viceroy"
+        },
+        {
+          "field": "option_d",
+          "old": "None of the above",
+          "new": "(d) None of the above"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 29,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "The Reserve Bank of India",
+          "new": "(a) The Reserve Bank of India"
+        },
+        {
+          "field": "option_b",
+          "old": "The Department of Economic Affairs",
+          "new": "(b) The Department of Economic Affairs"
+        },
+        {
+          "field": "option_c",
+          "old": "The Labour Bureau",
+          "new": "(c) The Labour Bureau"
+        },
+        {
+          "field": "option_d",
+          "old": "The Department of Personnel and Training",
+          "new": "(d) The Department of Personnel and Training"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 30,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "In the context of modern scientific research, consider the following statements ",
+          "new": "In the context of modern scientific research, consider the following statements "
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 31,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The terms 'Agreement on Agriculture', 'Agreement on the Application of Sanitary ",
+          "new": "The terms 'Agreement on Agriculture', 'Agreement on the Application of Sanitary "
+        },
+        {
+          "field": "option_a",
+          "old": "Food and Agriculture Organization",
+          "new": "(a) Food and Agriculture Organization"
+        },
+        {
+          "field": "option_b",
+          "old": "United Nations Framework Conference on Climate Change",
+          "new": "(b) United Nations Framework Conference on Climate Change"
+        },
+        {
+          "field": "option_c",
+          "old": "World Trade Organization",
+          "new": "(c) World Trade Organization"
+        },
+        {
+          "field": "option_d",
+          "old": "United Nations Environment Programme",
+          "new": "(d) United Nations Environment Programme"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 32,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to 'Near Field Communication (NFC) Technology', which of the foll",
+          "new": "With reference to 'Near Field Communication (NFC) Technology', which of the foll"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2 only",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "3 only",
+          "new": "(b) 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 33,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The area known as 'Golan Heights' sometimes appears in the news in the context o",
+          "new": "The area known as 'Golan Heights' sometimes appears in the news in the context o"
+        },
+        {
+          "field": "option_a",
+          "old": "Central Asia",
+          "new": "(a) Central Asia"
+        },
+        {
+          "field": "option_b",
+          "old": "Middle East",
+          "new": "(b) Middle East"
+        },
+        {
+          "field": "option_c",
+          "old": "South-East Asia",
+          "new": "(c) South-East Asia"
+        },
+        {
+          "field": "option_d",
+          "old": "Central Africa",
+          "new": "(d) Central Africa"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 34,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Convertibility of rupee implies",
+          "new": "Convertibility of rupee implies\n(a) being able to convert rupee notes into gold\n"
+        },
+        {
+          "field": "option_a",
+          "old": "being able to convert rupee notes into gold",
+          "new": "(a) being able to convert rupee notes into gold"
+        },
+        {
+          "field": "option_b",
+          "old": "allowing the value of rupee to be fixed by market forces",
+          "new": "(b) allowing the value of rupee to be fixed by market forces"
+        },
+        {
+          "field": "option_c",
+          "old": "freely permitting the conversion of rupee to other currencies and vice versa",
+          "new": "(c) freely permitting the conversion of rupee to other currencies and vice versa"
+        },
+        {
+          "field": "option_d",
+          "old": "developing an international market for currencies in India",
+          "new": "(d) developing an international market for currencies in India"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 35,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following pairs: 1. Champaka : Central India 2. Durgara : Jammu 3. ",
+          "new": "Consider the following pairs :\nMedieval Indian State\tPresent Region\n1. Champaka\t"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2",
+          "new": "(a) 1 and 2"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3",
+          "new": "(c) 1 and 3"
+        },
+        {
+          "field": "option_d",
+          "old": "3 only",
+          "new": "(d) 3 only"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 36,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following rivers: 1. Vamsadhara 2. Indravati 3. Pranahita 4. Pennar",
+          "new": "Consider the following rivers :\n1. Vamsadhara\n2. Indravati\n3. Pranahita\n4. Penna"
+        },
+        {
+          "field": "option_a",
+          "old": "1, 2 and 3",
+          "new": "(a) 1, 2 and 3"
+        },
+        {
+          "field": "option_b",
+          "old": "2, 3 and 4",
+          "new": "(b) 2, 3 and 4"
+        },
+        {
+          "field": "option_c",
+          "old": "1, 2 and 4",
+          "new": "(c) 1, 2 and 4"
+        },
+        {
+          "field": "option_d",
+          "old": "2 and 3 only",
+          "new": "(d) 2 and 3 only"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 37,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "When a bill is referred to a joint sitting of both the Houses of the Parliament,",
+          "new": "When a bill is referred to a joint sitting of both the Houses of the Parliament,"
+        },
+        {
+          "field": "option_a",
+          "old": "a simple majority of members present and voting",
+          "new": "(a) a simple majority of members present and voting"
+        },
+        {
+          "field": "option_b",
+          "old": "three-fourths majority of members present and voting",
+          "new": "(b) three-fourths majority of members present and voting"
+        },
+        {
+          "field": "option_c",
+          "old": "two-thirds majority of the Houses",
+          "new": "(c) two-thirds majority of the Houses"
+        },
+        {
+          "field": "option_d",
+          "old": "absolute majority of the Houses",
+          "new": "(d) absolute majority of the Houses"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 38,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following regions of India has a combination of mangrove forest",
+          "new": "Which one of the following regions of India has a combination of mangrove forest"
+        },
+        {
+          "field": "option_a",
+          "old": "(a) North Coastal Andhra Pradesh",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "(b) South-West Bengal",
+          "new": "(b) 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "(c) Southern Saurashtra",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "(d) Andaman and Nicobar Islands",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 39,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which of the following kingdoms were associated with the life of the Buddha?\n1. ",
+          "new": "Which of the following kingdoms were associated with the life of the Buddha?\n\n1."
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 40,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following is associated with the issue of control and phasing o",
+          "new": "Which one of the following is associated with the issue of control and phasing o"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 42,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The Government of India has established NITI Aayog to replace the",
+          "new": "The Government of India has established NITI Aayog to replace the\n\n(a) Human Rig"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 43,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "What is Rio+20 Conference, often mentioned in the news?",
+          "new": "What is Rio+20 Conference, often mentioned in the news?\n\n(a) It is the United Na"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 44,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following statements :\n1. The Executive Power of the Union of India",
+          "new": "Consider the following statements :\n1. The Executive Power of the Union of India"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 45,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The term 'Goldilocks Zone' is often seen in the news in the context of",
+          "new": "The term 'Goldilocks Zone' is often seen in the news in the context of\n\n(a) the "
+        },
+        {
+          "field": "option_a",
+          "old": "the limits of habitable zone above the surface of the Earth",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "regions inside the Earth where shale gas is available",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "search for the Earth-like planets in outer space",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "search for meteorites containing precious metals",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 46,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Who of the following organized a march on the Tanjore coast to break the Salt La",
+          "new": "Who of the following organized a march on the Tanjore coast to break the Salt La"
+        },
+        {
+          "field": "option_a",
+          "old": "V. O. Chidambaram Pillai",
+          "new": "(a) V. O. Chidambaram Pillai"
+        },
+        {
+          "field": "option_b",
+          "old": "C. Rajagopalachari",
+          "new": "(b) C. Rajagopalachari"
+        },
+        {
+          "field": "option_c",
+          "old": "K. Kamaraj",
+          "new": "(c) K. Kamaraj"
+        },
+        {
+          "field": "option_d",
+          "old": "Annie Besant",
+          "new": "(d) Annie Besant"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 47,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Who of the following founded a new city on the south bank of a tributary to rive",
+          "new": "Who of the following founded a new city on the south bank of a tributary to rive"
+        },
+        {
+          "field": "option_a",
+          "old": "Amoghavarsha I",
+          "new": "(a) Amoghavarsha I"
+        },
+        {
+          "field": "option_b",
+          "old": "Ballala II",
+          "new": "(b) Ballala II"
+        },
+        {
+          "field": "option_c",
+          "old": "Harihara I",
+          "new": "(c) Harihara I"
+        },
+        {
+          "field": "option_d",
+          "old": "Prataparudra II",
+          "new": "(d) Prataparudra II"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 48,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following statements :\n1. The first woman President of the Indian N",
+          "new": "Consider the following statements :\n\n1. The first woman President of the Indian "
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 49,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which of the following statements regarding 'Green Climate Fund' is/are correct?",
+          "new": "Which of the following statements regarding 'Green Climate Fund' is/are correct?"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 50,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Indira Gandhi Prize for Peace, Disarmament and Development for 2014 was given to",
+          "new": "Indira Gandhi Prize for Peace, Disarmament and Development for 2014 was given to"
+        },
+        {
+          "field": "option_a",
+          "old": "Bhabha Atomic Research Centre",
+          "new": "(a) Bhabha Atomic Research Centre"
+        },
+        {
+          "field": "option_b",
+          "old": "Indian Institute of Science",
+          "new": "(b) Indian Institute of Science"
+        },
+        {
+          "field": "option_c",
+          "old": "Indian Space Research Organization",
+          "new": "(c) Indian Space Research Organization"
+        },
+        {
+          "field": "option_d",
+          "old": "Tata Institute of Fundamental Research",
+          "new": "(d) Tata Institute of Fundamental Research"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 51,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to the Cabinet Mission, which of the following statements is/are ",
+          "new": "With reference to the Cabinet Mission, which of the following statements is/are "
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3",
+          "new": "(b) 2 and 3"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3",
+          "new": "(c) 1 and 3"
+        },
+        {
+          "field": "option_d",
+          "old": "None",
+          "new": "(d) None"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 52,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following National Parks has a climate that varies from tropica",
+          "new": "Which one of the following National Parks has a climate that varies from tropica"
+        },
+        {
+          "field": "option_a",
+          "old": "Khangchendzonga National Park",
+          "new": "(a) Khangchendzonga National Park"
+        },
+        {
+          "field": "option_b",
+          "old": "Nandadevi National Park",
+          "new": "(b) Nandadevi National Park"
+        },
+        {
+          "field": "option_c",
+          "old": "Neora Valley National Park",
+          "new": "(c) Neora Valley National Park"
+        },
+        {
+          "field": "option_d",
+          "old": "Namdapha National Park",
+          "new": "(d) Namdapha National Park"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 53,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Amnesty International is",
+          "new": "Amnesty International is (a) an agency of the United Nations to help refugees of"
+        },
+        {
+          "field": "option_a",
+          "old": "an agency of the United Nations to help refugees of civil wars",
+          "new": "(a) an agency of the United Nations to help refugees of civil wars"
+        },
+        {
+          "field": "option_b",
+          "old": "a global Human Rights Movement",
+          "new": "(b) a global Human Rights Movement"
+        },
+        {
+          "field": "option_c",
+          "old": "a non-governmental voluntary organization to help very poor people",
+          "new": "(c) a non-governmental voluntary organization to help very poor people"
+        },
+        {
+          "field": "option_d",
+          "old": "an inter-governmental agency to cater to medical emergencies in war-ravaged regions",
+          "new": "(d) an inter-governmental agency to cater to medical emergencies in war-ravaged regions"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 54,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to the art and archaeological history of India, which one among t",
+          "new": "With reference to the art and archaeological history of India, which one among t"
+        },
+        {
+          "field": "option_a",
+          "old": "Lingaraja Temple at Bhubaneswar",
+          "new": "(a) Lingaraja Temple at Bhubaneswar"
+        },
+        {
+          "field": "option_b",
+          "old": "Rock-cut Elephant at Dhauli",
+          "new": "(b) Rock-cut Elephant at Dhauli"
+        },
+        {
+          "field": "option_c",
+          "old": "Rock-cut Monuments at Mahabalipuram",
+          "new": "(c) Rock-cut Monuments at Mahabalipuram"
+        },
+        {
+          "field": "option_d",
+          "old": "Varaha Image at Udayagiri",
+          "new": "(d) Varaha Image at Udayagiri"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 55,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to Indian history, which of the following is/are the essential el",
+          "new": "With reference to Indian history, which of the following is/are the essential el"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2 only",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "3 only",
+          "new": "(c) 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 56,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "'BioCarbon Fund Initiative for Sustainable Forest Landscapes' is managed by the",
+          "new": "'BioCarbon Fund Initiative for Sustainable Forest Landscapes' is managed by the "
+        },
+        {
+          "field": "option_a",
+          "old": "Asian Development Bank",
+          "new": "(a) Asian Development Bank"
+        },
+        {
+          "field": "option_b",
+          "old": "International Monetary Fund",
+          "new": "(b) International Monetary Fund"
+        },
+        {
+          "field": "option_c",
+          "old": "United Nations Environment Programme",
+          "new": "(c) United Nations Environment Programme"
+        },
+        {
+          "field": "option_d",
+          "old": "World Bank",
+          "new": "(d) World Bank"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 57,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "India is a member of which among the following? 1. Asia-Pacific Economic Coopera",
+          "new": "India is a member of which among the following? 1. Asia-Pacific Economic Coopera"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2 only",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "3 only",
+          "new": "(b) 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1, 2 and 3",
+          "new": "(c) 1, 2 and 3"
+        },
+        {
+          "field": "option_d",
+          "old": "India is a member of none of them",
+          "new": "(d) India is a member of none of them"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 58,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "In India, the steel production industry requires the import of",
+          "new": "In India, the steel production industry requires the import of (a) saltpetre (b)"
+        },
+        {
+          "field": "option_a",
+          "old": "saltpetre",
+          "new": "(a) saltpetre"
+        },
+        {
+          "field": "option_b",
+          "old": "rock phosphate",
+          "new": "(b) rock phosphate"
+        },
+        {
+          "field": "option_c",
+          "old": "coking coal",
+          "new": "(c) coking coal"
+        },
+        {
+          "field": "option_d",
+          "old": "All of the above",
+          "new": "(d) All of the above"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 59,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The provisions in Fifth Schedule and Sixth Schedule in the Constitution of India",
+          "new": "The provisions in Fifth Schedule and Sixth Schedule in the Constitution of India"
+        },
+        {
+          "field": "option_a",
+          "old": "protect the interests of Scheduled Tribes",
+          "new": "(a) protect the interests of Scheduled Tribes"
+        },
+        {
+          "field": "option_b",
+          "old": "determine the boundaries between States",
+          "new": "(b) determine the boundaries between States"
+        },
+        {
+          "field": "option_c",
+          "old": "determine the powers, authority and responsibilities of Panchayats",
+          "new": "(c) determine the powers, authority and responsibilities of Panchayats"
+        },
+        {
+          "field": "option_d",
+          "old": "protect the interests of all the border States",
+          "new": "(d) protect the interests of all the border States"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 60,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to the Union Government, consider the following statements : 1. T",
+          "new": "With reference to the Union Government, consider the following statements : 1. T"
+        },
+        {
+          "field": "option_a",
+          "old": "1 and 2 only",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "2 only",
+          "new": "(c) 2 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 61,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Who/Which of the following is the custodian of the Constitution of India?",
+          "new": "Who/Which of the following is the custodian of the Constitution of India? (a) Th"
+        },
+        {
+          "field": "option_a",
+          "old": "The President of India",
+          "new": "(a) The President of India"
+        },
+        {
+          "field": "option_b",
+          "old": "The Prime Minister of India",
+          "new": "(b) The Prime Minister of India"
+        },
+        {
+          "field": "option_c",
+          "old": "The Lok Sabha Secretariat",
+          "new": "(c) The Lok Sabha Secretariat"
+        },
+        {
+          "field": "option_d",
+          "old": "The Supreme Court of India",
+          "new": "(d) The Supreme Court of India"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 62,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following statements : 1. The Accelerated Irrigation Benefits Progr",
+          "new": "Consider the following statements :\n1. The Accelerated Irrigation Benefits Progr"
+        },
+        {
+          "field": "option_a",
+          "old": "a) 1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "b) 2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "c) Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "d) Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 63,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The Genetic Engineering Appraisal Committee is constituted under the",
+          "new": "The Genetic Engineering Appraisal Committee is constituted under the\n(a) Food Sa"
+        },
+        {
+          "field": "option_a",
+          "old": "Food Safety and Standards Act, 2006",
+          "new": "(a) Food Safety and Standards Act, 2006"
+        },
+        {
+          "field": "option_b",
+          "old": "Geographical Indications of Goods (Registration and Protection) Act, 1999",
+          "new": "(b) Geographical Indications of Goods (Registration and Protection) Act, 1999"
+        },
+        {
+          "field": "option_c",
+          "old": "Environment (Protection) Act, 1986",
+          "new": "(c) Environment (Protection) Act, 1986"
+        },
+        {
+          "field": "option_d",
+          "old": "Wildlife (Protection) Act, 1972",
+          "new": "(d) Wildlife (Protection) Act, 1972"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 64,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "In the Mekong-Ganga Cooperation, an initiative of six countries, which of the fo",
+          "new": "In the Mekong-Ganga Cooperation, an initiative of six countries, which of the fo"
+        },
+        {
+          "field": "option_a",
+          "old": "There is no option provided",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "There is no option provided",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "There is no option provided",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "There is no option provided",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 65,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "'Basel III Accord' or simply 'Basel III', often seen in the news, seeks to",
+          "new": "'Basel III Accord' or simply 'Basel III', often seen in the news, seeks to\n(a) d"
+        },
+        {
+          "field": "option_a",
+          "old": "develop national strategies for the conservation and sustainable use of biological diversity",
+          "new": "(a) develop national strategies for the conservation and sustainable use of biological diversity"
+        },
+        {
+          "field": "option_b",
+          "old": "improve banking sector's ability to deal with financial and economic stress and improve risk management",
+          "new": "(b) improve banking sector's ability to deal with financial and economic stress and improve risk management"
+        },
+        {
+          "field": "option_c",
+          "old": "reduce the greenhouse gas emissions but places a heavier burden on developed countries",
+          "new": "(c) reduce the greenhouse gas emissions but places a heavier burden on developed countries"
+        },
+        {
+          "field": "option_d",
+          "old": "transfer technology from developed countries to poor countries to enable them to replace the use of chloroflurocarbons in refrigeration with harmless chemicals",
+          "new": "(d) transfer technology from developed countries to poor countries to enable them to replace the use of chloroflurocarbons in refrigeration with harmless chemicals"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 66,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following statements : 1. The winds which blow between 30° N and 60",
+          "new": "Consider the following statements :\n1. The winds which blow between 30° N and 60"
+        },
+        {
+          "field": "option_a",
+          "old": "a) 1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "b) 2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "c) Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "d) Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 67,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to Indian Ocean Rim Association for Regional Cooperation (IOR-ARC",
+          "new": "With reference to Indian Ocean Rim Association for Regional Cooperation (IOR-ARC"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 68,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Swadeshi Movement",
+          "new": "(a) Swadeshi Movement"
+        },
+        {
+          "field": "option_b",
+          "old": "Quit India Movement",
+          "new": "(b) Quit India Movement"
+        },
+        {
+          "field": "option_c",
+          "old": "Non-Cooperation Movement",
+          "new": "(c) Non-Cooperation Movement"
+        },
+        {
+          "field": "option_d",
+          "old": "Civil Disobedience Movement",
+          "new": "(d) Civil Disobedience Movement"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 69,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Meghalaya",
+          "new": "(a) Meghalaya"
+        },
+        {
+          "field": "option_b",
+          "old": "Himachal Pradesh",
+          "new": "(b) Himachal Pradesh"
+        },
+        {
+          "field": "option_c",
+          "old": "Jharkhand",
+          "new": "(c) Jharkhand"
+        },
+        {
+          "field": "option_d",
+          "old": "Tamil Nadu",
+          "new": "(d) Tamil Nadu"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 70,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Tides occur in the oceans and seas due to which among the following? 1. Gravitat",
+          "new": "Tides occur in the oceans and seas due to which among the following?\n1. Gravitat"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 71,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "In which of the following activities are Indian Remote Sensing (IRS) satellites ",
+          "new": "In which of the following activities are Indian Remote Sensing (IRS) satellites "
+        },
+        {
+          "field": "option_a",
+          "old": "1, 2 and 3 only",
+          "new": "(a) 1, 2 and 3 only"
+        },
+        {
+          "field": "option_b",
+          "old": "4 and 5 only",
+          "new": "(b) 4 and 5 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 2 only",
+          "new": "(c) 1 and 2 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2, 3, 4 and 5",
+          "new": "(d) 1, 2, 3, 4 and 5"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 72,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following States :\n1. Arunachal Pradesh\n2. Himachal Pradesh\n3. Mizo",
+          "new": "Consider the following States :\n1. Arunachal Pradesh\n2. Himachal Pradesh\n3. Mizo"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 73,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The term ‘IndARC’, sometimes seen in the news, is the name of",
+          "new": "The term ‘IndARC’, sometimes seen in the news, is the name of\n(a) an indigenousl"
+        },
+        {
+          "field": "option_a",
+          "old": "an indigenously developed radar system inducted into Indian Defence",
+          "new": "(a) an indigenously developed radar system inducted into Indian Defence"
+        },
+        {
+          "field": "option_b",
+          "old": "India's satellite to provide services to the countries of Indian Ocean Rim",
+          "new": "(b) India’s satellite to provide services to the countries of Indian Ocean Rim"
+        },
+        {
+          "field": "option_c",
+          "old": "a scientific establishment set up by India in Antarctic region",
+          "new": "(c) a scientific establishment set up by India in Antarctic region"
+        },
+        {
+          "field": "option_d",
+          "old": "India's underwater observatory to scientifically study the Arctic region",
+          "new": "(d) India’s underwater observatory to scientifically study the Arctic region"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 74,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to ‘Forest Carbon Partnership Facility’, which of the following s",
+          "new": "With reference to ‘Forest Carbon Partnership Facility’, which of the following s"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 75,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following was given classical language status recently?",
+          "new": "Which one of the following was given classical language status recently?\n(a) Odi"
+        },
+        {
+          "field": "option_a",
+          "old": "Odia",
+          "new": "(a) Odia"
+        },
+        {
+          "field": "option_b",
+          "old": "Konkani",
+          "new": "(b) Konkani"
+        },
+        {
+          "field": "option_c",
+          "old": "Bhojpuri",
+          "new": "(c) Bhojpuri"
+        },
+        {
+          "field": "option_d",
+          "old": "Assamese",
+          "new": "(d) Assamese"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 76,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to an organization known as 'BirdLife International', which of th",
+          "new": "With reference to an organization known as 'BirdLife International', which of th"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 3 only",
+          "new": "(b) 2 and 3 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2 and 3",
+          "new": "(d) 1, 2 and 3"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 77,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Syria",
+          "new": "(a) Syria"
+        },
+        {
+          "field": "option_b",
+          "old": "Jordan",
+          "new": "(b) Jordan"
+        },
+        {
+          "field": "option_c",
+          "old": "Lebanon",
+          "new": "(c) Lebanon"
+        },
+        {
+          "field": "option_d",
+          "old": "Israel",
+          "new": "(d) Israel"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 78,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Tropical moist deciduous forest",
+          "new": "(a) Tropical moist deciduous forest"
+        },
+        {
+          "field": "option_b",
+          "old": "Tropical rain forest",
+          "new": "(b) Tropical rain forest"
+        },
+        {
+          "field": "option_c",
+          "old": "Tropical thorn scrub forest",
+          "new": "(c) Tropical thorn scrub forest"
+        },
+        {
+          "field": "option_d",
+          "old": "Temperate forest with grasslands",
+          "new": "(d) Temperate forest with grasslands"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 79,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "a strategy to tackle the regional terrorism, an outcome of a meeting of the Shanghai Cooperation Organization",
+          "new": "(a) a strategy to tackle the regional terrorism, an outcome of a meeting of the Shanghai Cooperation Organization"
+        },
+        {
+          "field": "option_b",
+          "old": "a plan of action for sustainable economic growth in the Asia-Pacific Region, an outcome of the deliberations of the Asia-Pacific Economic Forum",
+          "new": "(b) a plan of action for sustainable economic growth in the Asia-Pacific Region, an outcome of the deliberations of the Asia-Pacific Economic Forum"
+        },
+        {
+          "field": "option_c",
+          "old": "an agenda for women's empowerment, an outcome of a World Conference convened by the United Nations",
+          "new": "(c) an agenda for women's empowerment, an outcome of a World Conference convened by the United Nations"
+        },
+        {
+          "field": "option_d",
+          "old": "a strategy to combat wildlife trafficking, a declaration of the East Asia Summit",
+          "new": "(d) a strategy to combat wildlife trafficking, a declaration of the East Asia Summit"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 80,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Each day is more or less the same, the morning is clear and bright with a sea br",
+          "new": "\"Each day is more or less the same, the morning is clear and bright with a sea b"
+        },
+        {
+          "field": "option_a",
+          "old": "Savannah",
+          "new": "(a) Savannah"
+        },
+        {
+          "field": "option_b",
+          "old": "Equatorial",
+          "new": "(b) Equatorial"
+        },
+        {
+          "field": "option_c",
+          "old": "Monsoon",
+          "new": "(c) Monsoon"
+        },
+        {
+          "field": "option_d",
+          "old": "Mediterranean",
+          "new": "(d) Mediterranean"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 81,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to Indian economy, consider the following statements : 1. The rat",
+          "new": "With reference to Indian economy, consider the following statements :\n1. The rat"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 82,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Consider the following statements : 1. The Legislative Council of a State in Ind",
+          "new": "Consider the following statements :\n1. The Legislative Council of a State in Ind"
+        },
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 only",
+          "new": "(b) 2 only"
+        },
+        {
+          "field": "option_c",
+          "old": "Both 1 and 2",
+          "new": "(c) Both 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "Neither 1 nor 2",
+          "new": "(d) Neither 1 nor 2"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 83,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "\"To uphold and protect the Sovereignty, Unity and Integrity of India\" is a provi",
+          "new": "\"To uphold and protect the Sovereignty, Unity and Integrity of India\" is a provi"
+        },
+        {
+          "field": "option_a",
+          "old": "Preamble of the Constitution",
+          "new": "(a) Preamble of the Constitution"
+        },
+        {
+          "field": "option_b",
+          "old": "Directive Principles of State Policy",
+          "new": "(b) Directive Principles of State Policy"
+        },
+        {
+          "field": "option_c",
+          "old": "Fundamental Rights",
+          "new": "(c) Fundamental Rights"
+        },
+        {
+          "field": "option_d",
+          "old": "Fundamental Duties",
+          "new": "(d) Fundamental Duties"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 84,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "Which one of the following is the best description of the term 'ecosystem'?",
+          "new": "Which one of the following is the best description of the term 'ecosystem'? \n(a)"
+        },
+        {
+          "field": "option_a",
+          "old": "A community of organisms interacting with one another",
+          "new": "(a) A community of organisms interacting with one another"
+        },
+        {
+          "field": "option_b",
+          "old": "That part of the Earth which is inhabited by living organisms",
+          "new": "(b) That part of the Earth which is inhabited by living organisms"
+        },
+        {
+          "field": "option_c",
+          "old": "A community of organisms together with the environment in which they live",
+          "new": "(c) A community of organisms together with the environment in which they live"
+        },
+        {
+          "field": "option_d",
+          "old": "The flora and fauna of a geographical area",
+          "new": "(d) The flora and fauna of a geographical area"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 85,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "The fundamental object of Panchayati Raj system is to ensure which among the fol",
+          "new": "The fundamental object of Panchayati Raj system is to ensure which among the fol"
+        },
+        {
+          "field": "option_a",
+          "old": "1, 2 and 3 only",
+          "new": "(a) 1, 2 and 3 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2 and 4 only",
+          "new": "(b) 2 and 4 only"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 3 only",
+          "new": "(c) 1 and 3 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2, 3 and 4",
+          "new": "(d) 1, 2, 3 and 4"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 86,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "1 only",
+          "new": "(a) 1 only"
+        },
+        {
+          "field": "option_b",
+          "old": "2, 3 and 4",
+          "new": "(b) 2, 3 and 4"
+        },
+        {
+          "field": "option_c",
+          "old": "1 and 2",
+          "new": "(c) 1 and 2"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 3 and 4",
+          "new": "(d) 1, 3 and 4"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 87,
+      "diffs": [
+        {
+          "field": "question",
+          "old": "With reference to inflation in India, which of the following statements is corre",
+          "new": "With reference to inflation in India, which of the following statements is corre"
+        },
+        {
+          "field": "option_a",
+          "old": "Controlling the inflation in India is the responsibility of the Government of India only",
+          "new": "(a) Controlling the inflation in India is the responsibility of the Government of India only"
+        },
+        {
+          "field": "option_b",
+          "old": "The Reserve Bank of India has no role in controlling the inflation",
+          "new": "(b) The Reserve Bank of India has no role in controlling the inflation"
+        },
+        {
+          "field": "option_c",
+          "old": "Decreased money circulation helps in controlling the inflation",
+          "new": "(c) Decreased money circulation helps in controlling the inflation"
+        },
+        {
+          "field": "option_d",
+          "old": "Increased money circulation helps in controlling the inflation",
+          "new": "(d) Increased money circulation helps in controlling the inflation"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 88,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "1 and 2 only",
+          "new": "(a) 1 and 2 only"
+        },
+        {
+          "field": "option_b",
+          "old": "1, 3, 4 and 5 only",
+          "new": "(b) 1, 3, 4 and 5 only"
+        },
+        {
+          "field": "option_c",
+          "old": "2, 4 and 5 only",
+          "new": "(c) 2, 4 and 5 only"
+        },
+        {
+          "field": "option_d",
+          "old": "1, 2, 3, 4 and 5",
+          "new": "(d) 1, 2, 3, 4 and 5"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 89,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Preamble",
+          "new": "(a) Preamble"
+        },
+        {
+          "field": "option_b",
+          "old": "Directive Principles of State Policy",
+          "new": "(b) Directive Principles of State Policy"
+        },
+        {
+          "field": "option_c",
+          "old": "Fundamental Rights",
+          "new": "(c) Fundamental Rights"
+        },
+        {
+          "field": "option_d",
+          "old": "Seventh Schedule",
+          "new": "(d) Seventh Schedule"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 90,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "labour-augmenting technological progress",
+          "new": "(a) labour-augmenting technological progress"
+        },
+        {
+          "field": "option_b",
+          "old": "capital-augmenting technological progress",
+          "new": "(b) capital-augmenting technological progress"
+        },
+        {
+          "field": "option_c",
+          "old": "capital-reducing technological progress",
+          "new": "(c) capital-reducing technological progress"
+        },
+        {
+          "field": "option_d",
+          "old": "None of the above",
+          "new": "(d) None of the above"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 91,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Lok Sabha is elected directly by the people",
+          "new": "(a) Lok Sabha is elected directly by the people"
+        },
+        {
+          "field": "option_b",
+          "old": "Parliament can amend the Constitution",
+          "new": "(b) Parliament can amend the Constitution"
+        },
+        {
+          "field": "option_c",
+          "old": "Rajya Sabha cannot be dissolved",
+          "new": "(c) Rajya Sabha cannot be dissolved"
+        },
+        {
+          "field": "option_d",
+          "old": "Council of Ministers is responsible to the Lok Sabha",
+          "new": "(d) Council of Ministers is responsible to the Lok Sabha"
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "q_num": 97,
+      "diffs": [
+        {
+          "field": "option_a",
+          "old": "Encouraging the farmers to use their own farm seeds and discouraging them to buy the seeds from others",
+          "new": "(a) Encouraging the farmers to use their own farm seeds and discouraging them to buy the seeds from others"
+        },
+        {
+          "field": "option_b",
+          "old": "Involving the farmers for training in quality seed production and thereby to make available quality seeds to others at appropriate time and affordable cost",
+          "new": "(b) Involving the farmers for training in quality seed production and thereby to make available quality seeds to others at appropriate time and affordable cost"
+        },
+        {
+          "field": "option_c",
+          "old": "Earmarking some villages exclusively for the production of certified seeds",
+          "new": "(c) Earmarking some villages exclusively for the production of certified seeds"
+        },
+        {
+          "field": "option_d",
+          "old": "Identifying the entrepreneurs in villages and providing them technology and finance to set up seed companies",
+          "new": "(d) Identifying the entrepreneurs in villages and providing them technology and finance to set up seed companies"
+        }
+      ]
+    }
+  ]
+}
