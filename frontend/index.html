@@ -18,13 +18,16 @@
       --accent:#7c6dfa; --accent2:#f5a623; --green:#22d68a; --red:#ff5c5c;
       --blue:#38bdf8; --gold:#ffd700; --shadow:rgba(0,0,0,.5);
       --sidebar-bg:#111320; --card-hover:rgba(124,109,250,.06);
+      --accent-end:#a855f7; --accent-shadow:rgba(124,109,250,.28); --accent-bg:rgba(124,109,250,.08);
     }
+    /* ── UPSC Scholar Theme (light) ── */
     :root[data-theme="light"]{
-      --bg:#f0f2f5; --surface:#ffffff; --surface2:#f7f8fc; --surface3:#eef0f5;
-      --border:#dde1ea; --text:#111b21; --muted:#6b7280; --input-bg:#f0f2f5;
-      --accent:#128c7e; --accent2:#f59e0b; --green:#25d366; --red:#ef4444;
-      --blue:#0ea5e9; --gold:#d97706; --shadow:rgba(0,0,0,.1);
-      --sidebar-bg:#ffffff; --card-hover:rgba(18,140,126,.04);
+      --bg:#faf8f5; --surface:#ffffff; --surface2:#f5f2ec; --surface3:#ede8df;
+      --border:#e2d9cc; --text:#1c1917; --muted:#78716c; --input-bg:#f5f2ec;
+      --accent:#c2680a; --accent2:#d97706; --green:#166534; --red:#dc2626;
+      --blue:#1d4ed8; --gold:#b45309; --shadow:rgba(0,0,0,.08);
+      --sidebar-bg:#f5f2ec; --card-hover:rgba(194,104,10,.04);
+      --accent-end:#d97706; --accent-shadow:rgba(194,104,10,.25); --accent-bg:rgba(194,104,10,.08);
     }
 
     html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;transition:background .3s,color .3s}
@@ -56,7 +59,7 @@
     /* ════════ LOGIN ════════ */
     .login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;z-index:1}
     .login-card{width:100%;max-width:440px;background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:44px 38px;animation:fadeUp .5s ease;box-shadow:0 24px 80px var(--shadow)}
-    .login-emblem{width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,var(--accent),#a855f7);display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 20px;animation:glow 3s ease infinite}
+    .login-emblem{width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent-end));display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin:0 auto 20px;animation:glow 3s ease infinite}
     .login-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:800;text-align:center;margin-bottom:6px;background:linear-gradient(135deg,var(--text),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .login-sub{text-align:center;color:var(--muted);font-size:.875rem;margin-bottom:28px;line-height:1.6}
     .login-sub b{color:var(--accent2);font-weight:600}
@@ -66,7 +69,7 @@
     .form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,109,250,.12)}
     .form-input::placeholder{color:var(--muted)}
     .form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238892b0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-    .btn-primary{width:100%;padding:13px;border:none;border-radius:11px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,109,250,.35);transition:opacity .2s,transform .15s;margin-top:6px}
+    .btn-primary{width:100%;padding:13px;border:none;border-radius:11px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;background:linear-gradient(135deg,var(--accent),var(--accent-end));color:#fff;box-shadow:0 4px 20px var(--accent-shadow);transition:opacity .2s,transform .15s;margin-top:6px}
     .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
     .login-quote{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);text-align:center;font-size:.82rem;color:var(--muted);font-style:italic;line-height:1.6}
     .login-quote b{color:var(--accent2);font-style:normal}
@@ -80,13 +83,13 @@
     .logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .logo-sub{font-size:.7rem;color:var(--muted);margin-top:1px}
     .sidebar-user{padding:12px 18px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
-    .avatar{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#a855f7);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex-shrink:0}
+    .avatar{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent-end));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex-shrink:0}
     .user-name{font-weight:600;font-size:.88rem}
     .user-target{font-size:.72rem;color:var(--accent2)}
     .nav-item{display:flex;align-items:center;gap:10px;padding:10px 18px;cursor:pointer;color:var(--muted);font-size:.86rem;font-weight:500;transition:all .18s;border:none;background:none;width:100%;text-align:left;position:relative}
     .nav-item:hover{color:var(--text);background:var(--card-hover)}
     .nav-item.active{color:var(--accent);background:rgba(124,109,250,.08)}
-    [data-theme="light"] .nav-item.active{background:rgba(18,140,126,.08)}
+    [data-theme="light"] .nav-item.active{background:var(--accent-bg)}
     .nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:0 2px 2px 0}
     .nav-icon{font-size:1rem;width:18px;text-align:center}
     .sidebar-bottom{margin-top:auto;padding:12px 0}
@@ -127,11 +130,11 @@
 
     /* ════════ DASHBOARD ════════ */
     .greeting-banner{background:linear-gradient(135deg,rgba(124,109,250,.12),rgba(168,85,247,.07));border:1px solid rgba(124,109,250,.25);border-radius:16px;padding:22px 26px;margin-bottom:22px;display:flex;align-items:center;gap:16px}
-    [data-theme="light"] .greeting-banner{background:linear-gradient(135deg,rgba(18,140,126,.08),rgba(37,211,102,.05));border-color:rgba(18,140,126,.2)}
+    [data-theme="light"] .greeting-banner{background:linear-gradient(135deg,rgba(194,104,10,.07),rgba(215,119,6,.04));border-color:rgba(194,104,10,.2)}
     .greeting-emoji{font-size:2.6rem;animation:bounce 3s ease infinite}
     .greeting-text h2{font-size:1.2rem;font-weight:700;margin-bottom:3px}
     .greeting-text p{color:var(--muted);font-size:.85rem;line-height:1.6}
-    .btn-start{margin-left:auto;padding:10px 22px;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:.88rem;font-weight:700;white-space:nowrap;font-family:inherit;transition:opacity .2s}
+    .btn-start{margin-left:auto;padding:10px 22px;background:linear-gradient(135deg,var(--accent),var(--accent-end));color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:.88rem;font-weight:700;white-space:nowrap;font-family:inherit;transition:opacity .2s}
     .btn-start:hover{opacity:.88}
 
     .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
@@ -185,7 +188,7 @@
     .q-progress-text b{color:var(--text)}
     .q-dots{display:flex;gap:3px;margin-top:5px}
     .qdot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:background .3s}
-    .qdot.ok{background:var(--green)} .qdot.no{background:var(--red)} .qdot.cur{background:var(--accent);animation:pulse 1s ease infinite}
+    .qdot.ok{background:var(--green)} .qdot.no{background:var(--red)} .qdot.cur{background:var(--accent);animation:pulse 1s ease infinite} .qdot.mrk{background:var(--accent2);box-shadow:0 0 0 2px rgba(245,166,35,.3)}
     .timer{display:flex;align-items:center;gap:5px;padding:6px 13px;background:var(--surface2);border-radius:20px;font-size:.86rem;font-weight:600;font-variant-numeric:tabular-nums}
     .timer.warn{color:var(--accent2)} .timer.danger{color:var(--red);animation:pulse .8s ease infinite}
 
@@ -215,12 +218,58 @@
     .opt-btn.wrg .opt-lbl{background:var(--red);color:#fff}
 
     .submit-row{display:flex;gap:10px;align-items:center;margin-top:16px}
-    .btn-submit{padding:11px 28px;border:none;border-radius:10px;cursor:pointer;font-size:.92rem;font-weight:700;font-family:inherit;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;transition:all .2s;box-shadow:0 3px 14px rgba(124,109,250,.28)}
+    .btn-submit{padding:11px 28px;border:none;border-radius:10px;cursor:pointer;font-size:.92rem;font-weight:700;font-family:inherit;background:linear-gradient(135deg,var(--accent),var(--accent-end));color:#fff;transition:all .2s;box-shadow:0 3px 14px var(--accent-shadow)}
     .btn-submit:hover{opacity:.9;transform:translateY(-1px)} .btn-submit:disabled{opacity:.35;cursor:default;transform:none}
     .btn-sec{padding:11px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.86rem;font-weight:500;font-family:inherit;background:none;color:var(--muted);transition:all .2s}
     .btn-sec:hover{border-color:var(--muted);color:var(--text)}
     .btn-bk{padding:11px;border:1px solid var(--border);border-radius:10px;cursor:pointer;background:none;color:var(--muted);transition:all .2s;font-size:.95rem}
     .btn-bk.on{color:var(--accent2);border-color:var(--accent2)}
+    .btn-mark{padding:6px 13px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;background:none;color:var(--muted);font-size:.78rem;font-weight:700;font-family:inherit;transition:all .18s;display:flex;align-items:center;gap:5px}
+    .btn-mark:hover{border-color:var(--accent2);color:var(--accent2)}
+    .btn-mark.on{border-color:var(--accent2);color:var(--accent2);background:rgba(245,166,35,.09)}
+
+    /* ── View Toggle ─────────────────────────────────────────────────── */
+    .view-toggle{display:flex;gap:5px}
+    .view-btn{padding:5px 11px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:.76rem;font-weight:700;font-family:inherit;background:none;color:var(--muted);transition:all .18s;letter-spacing:.2px}
+    .view-btn.on{border-color:var(--accent);color:var(--accent);background:rgba(124,109,250,.09)}
+    .view-btn:hover:not(.on){border-color:var(--muted)}
+
+    /* ── UPSC Exam Booklet View ──────────────────────────────────────── */
+    .upsc-booklet{background:#fffef9;border:1px solid #d4cdb8;border-radius:4px;box-shadow:0 2px 16px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.8);margin-bottom:14px;overflow:hidden;font-family:'Times New Roman',Times,serif}
+    .upsc-booklet-header{background:#f5f0e8;border-bottom:2px solid #b8a98a;padding:10px 20px;display:flex;justify-content:space-between;align-items:center}
+    .upsc-booklet-title{font-size:.78rem;font-weight:700;color:#3a2e1a;letter-spacing:.5px;text-transform:uppercase;font-family:'Times New Roman',Times,serif}
+    .upsc-booklet-pnum{font-size:.75rem;color:#6b5a3e;font-family:'Times New Roman',Times,serif}
+    .upsc-booklet-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #d4cdb8}
+    .upsc-booklet-col{padding:18px 20px;display:flex;flex-direction:column;gap:0}
+    .upsc-booklet-col:first-child{border-right:1.5px solid #c9bfa5}
+    .upsc-bq{padding:14px 0;border-bottom:1px dashed #d4cdb8}
+    .upsc-bq:last-child{border-bottom:none}
+    .upsc-bq-num{font-size:.875rem;font-weight:700;color:#1a1208;font-family:'Times New Roman',Times,serif;display:inline}
+    .upsc-bq-mrk{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent2);flex-shrink:0;box-shadow:0 0 0 2px rgba(245,166,35,.3)}
+    .upsc-bq-text{font-size:.875rem;line-height:1.75;color:#1a1208;margin-bottom:10px;white-space:pre-wrap}
+    .upsc-bq-opts{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+    .upsc-bq-opt{display:flex;align-items:baseline;gap:0;padding:3px 6px;border-radius:3px;cursor:pointer;background:transparent;border:1.5px solid transparent;color:#1a1208;font-size:.855rem;line-height:1.6;font-family:Georgia,'Times New Roman',serif;text-align:left;transition:background .12s,border-color .12s;width:100%}
+    .upsc-bq-opt:hover:not(:disabled){background:rgba(124,109,250,.07);border-color:rgba(124,109,250,.25)}
+    .upsc-bq-opt.sel{background:rgba(124,109,250,.12);border-color:rgba(124,109,250,.5);font-weight:600}
+    .upsc-bq-opt.cor{background:rgba(34,214,138,.12);border-color:rgba(34,214,138,.5)}
+    .upsc-bq-opt.wrg{background:rgba(255,92,92,.1);border-color:rgba(255,92,92,.45)}
+    .upsc-bq-opt.rev{background:rgba(34,214,138,.04);border-color:rgba(34,214,138,.2)}
+    .upsc-bq-opt:disabled{cursor:default}
+    .upsc-bq-opt-lbl{font-weight:700;margin-right:3px;flex-shrink:0}
+    .upsc-bq-opt.sel .upsc-bq-opt-lbl{color:#7c6dfa}
+    .upsc-bq-opt.cor .upsc-bq-opt-lbl{color:#22d68a}
+    .upsc-bq-opt.wrg .upsc-bq-opt-lbl{color:#ff5c5c}
+    .upsc-bq-foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .upsc-bq-submit{padding:4px 13px;border:1px solid #8b7355;border-radius:3px;cursor:pointer;background:#f0ead8;color:#3a2e1a;font-size:.76rem;font-weight:700;font-family:'Times New Roman',Times,serif;transition:all .15s}
+    .upsc-bq-submit:hover:not(:disabled){background:#e0d5bb}
+    .upsc-bq-submit:disabled{opacity:.4;cursor:default}
+    .upsc-bq-markbtn{padding:4px 10px;border:1px solid transparent;border-radius:3px;cursor:pointer;background:transparent;color:#8b7355;font-size:.74rem;font-weight:700;font-family:'Times New Roman',Times,serif;transition:all .15s}
+    .upsc-bq-markbtn:hover{color:var(--accent2);border-color:rgba(245,166,35,.4)}
+    .upsc-bq-markbtn.on{color:var(--accent2);border-color:rgba(245,166,35,.5);background:rgba(245,166,35,.08)}
+    .upsc-bq-result{font-size:.76rem;font-weight:700;font-family:'Times New Roman',Times,serif}
+    .upsc-bq-result.ok{color:#1a7a4a} .upsc-bq-result.no{color:#c0392b}
+    .page-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0 4px}
+    .page-info{font-size:.79rem;color:var(--muted);text-align:center}
 
     .result-banner{display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:11px;margin-top:14px;animation:fadeUp .3s ease}
     .result-banner.ok{background:rgba(34,214,138,.08);border:1px solid rgba(34,214,138,.2)}
@@ -245,7 +294,9 @@
     .q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
     .btn-nav{padding:9px 20px;border:1px solid var(--border);border-radius:9px;cursor:pointer;font-size:.86rem;font-weight:600;background:var(--surface);color:var(--muted);transition:all .2s;font-family:inherit}
     .btn-nav:hover:not(:disabled){border-color:var(--accent);color:var(--accent)} .btn-nav:disabled{opacity:.28;cursor:default}
-    .btn-nav.pri{background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;border:none}
+    .btn-nav.pri{background:linear-gradient(135deg,var(--accent),var(--accent-end));color:#fff;border:none}
+    .btn-next-q{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent-end));color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:1rem;font-weight:700;font-family:inherit;letter-spacing:.3px;transition:opacity .2s;box-shadow:0 4px 16px var(--accent-shadow)}
+    .btn-next-q:hover{opacity:.9} .btn-next-q.finish{background:linear-gradient(135deg,var(--green),#10b981)}
 
     /* Filter bar */
     .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
@@ -268,7 +319,7 @@
     .topic-chip{padding:8px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:500;background:var(--surface2);color:var(--muted);transition:all .2s;text-align:center;font-family:inherit}
     .topic-chip.on{border-color:var(--accent);background:rgba(124,109,250,.1);color:var(--accent)}
     .mock-params{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
-    .btn-launch{padding:13px 32px;background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;transition:opacity .2s;box-shadow:0 4px 16px rgba(124,109,250,.3)}
+    .btn-launch{padding:13px 32px;background:linear-gradient(135deg,var(--accent),var(--accent-end));color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:.95rem;font-weight:700;font-family:inherit;transition:opacity .2s;box-shadow:0 4px 16px var(--accent-shadow)}
     .btn-launch:hover{opacity:.9} .btn-launch:disabled{opacity:.35;cursor:default}
 
     /* Mock test running */
@@ -358,6 +409,56 @@
     .spin{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
     .section-lbl{font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:12px}
     .divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+    /* ── UPSC Scholar overrides (light mode) — replace purple tints with saffron ── */
+    [data-theme="light"] .form-input:focus{box-shadow:0 0 0 3px rgba(194,104,10,.15)}
+    [data-theme="light"] .t-topic{background:rgba(194,104,10,.09);color:var(--accent);border-color:rgba(194,104,10,.2)}
+    [data-theme="light"] .opt-btn:hover:not(:disabled){background:rgba(194,104,10,.05);border-color:var(--accent)}
+    [data-theme="light"] .opt-btn.sel{background:rgba(194,104,10,.09);border-color:var(--accent)}
+    [data-theme="light"] .view-btn.on{background:rgba(194,104,10,.09);border-color:var(--accent);color:var(--accent)}
+    [data-theme="light"] .topic-chip.on{background:rgba(194,104,10,.09);border-color:var(--accent);color:var(--accent)}
+    [data-theme="light"] .fchip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+    [data-theme="light"] .mock-mode-card:hover,[data-theme="light"] .mock-mode-card.sel{box-shadow:0 4px 24px rgba(194,104,10,.15)}
+    [data-theme="light"] .cal-day.today{background:rgba(194,104,10,.08)!important;border-color:var(--accent)!important}
+    [data-theme="light"] .cal-tip{background:linear-gradient(135deg,rgba(194,104,10,.07),rgba(215,119,6,.04));border-color:rgba(194,104,10,.2)}
+    [data-theme="light"] .upsc-bq-opt:hover:not(:disabled){background:rgba(194,104,10,.06);border-color:rgba(194,104,10,.3)}
+    [data-theme="light"] .upsc-bq-opt.sel{background:rgba(194,104,10,.1);border-color:rgba(194,104,10,.5)}
+    [data-theme="light"] .mq-dot.att{background:rgba(194,104,10,.1);border-color:var(--accent);color:var(--accent)}
+    [data-theme="light"] .related-chip:hover{background:rgba(194,104,10,.07);border-color:var(--accent);color:var(--accent)}
+    [data-theme="light"] .insight-card{background:#fdf6e8;border-color:#e8d5b0}
+    [data-theme="light"] .insight-title{color:var(--accent)}
+    [data-theme="light"] .quote-card{background:linear-gradient(135deg,rgba(215,119,6,.07),rgba(180,83,9,.04));border-color:rgba(215,119,6,.2)}
+    [data-theme="light"] .stars-bg{display:none}
+    [data-theme="light"] .login-card{border-color:var(--border);box-shadow:0 16px 60px rgba(0,0,0,.08)}
+    [data-theme="light"] .sidebar{border-right-color:var(--border)}
+
+    /* ════════ EXAM MODE ════════ */
+    .exam-overlay{position:fixed;inset:0;z-index:9999;background:#faf8f5;overflow-y:auto;display:none;flex-direction:column}
+    .exam-overlay.active{display:flex}
+    .exam-topbar{position:sticky;top:0;z-index:10000;background:#f5f0e4;border-bottom:2px solid #c9a84c;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0}
+    .exam-topbar-left{display:flex;flex-direction:column;gap:2px}
+    .exam-topbar-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:800;color:#1c1917;letter-spacing:.2px}
+    .exam-topbar-sub{font-size:.72rem;color:#78716c}
+    .exam-countdown{font-size:1.4rem;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:.5px;color:#1c1917;background:#fff;border:2px solid #c9a84c;padding:4px 18px;border-radius:6px;font-family:'Playfair Display',serif}
+    .exam-countdown.warn{color:#c2680a;border-color:#c2680a;background:#fff8f0}
+    .exam-countdown.danger{color:#dc2626;border-color:#dc2626;background:#fff0f0;animation:pulse .8s ease infinite}
+    .exam-topbar-right{display:flex;align-items:center;gap:12px}
+    .btn-exam-exit{padding:7px 16px;border:1.5px solid #78716c;border-radius:6px;cursor:pointer;background:transparent;color:#78716c;font-size:.8rem;font-weight:700;font-family:inherit;transition:all .2s}
+    .btn-exam-exit:hover{border-color:#dc2626;color:#dc2626;background:#fff0f0}
+    .exam-content{flex:1;padding:20px 24px;max-width:960px;margin:0 auto;width:100%}
+    .exam-warn-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10002;display:flex;align-items:center;justify-content:center;padding:20px}
+    .exam-warn-box{background:#fff;border-radius:16px;padding:32px 36px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+    .exam-warn-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:#1c1917;margin-bottom:8px}
+    .exam-warn-sub{font-size:.85rem;color:#78716c;line-height:1.65;margin-bottom:22px}
+    .exam-warn-btns{display:flex;gap:10px;justify-content:center}
+    .btn-exam-keep{padding:10px 22px;border:1.5px solid #c2680a;border-radius:8px;cursor:pointer;background:#c2680a;color:#fff;font-size:.88rem;font-weight:700;font-family:inherit;transition:all .2s}
+    .btn-exam-quit{padding:10px 22px;border:1.5px solid #e2d9cc;border-radius:8px;cursor:pointer;background:transparent;color:#78716c;font-size:.88rem;font-weight:700;font-family:inherit;transition:all .2s}
+    .btn-exam-keep:hover{opacity:.9} .btn-exam-quit:hover{border-color:#dc2626;color:#dc2626}
+    .btn-exam-mode{padding:5px 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:.76rem;font-weight:700;font-family:inherit;background:none;color:var(--muted);transition:all .18s;letter-spacing:.2px}
+    .btn-exam-mode:hover{border-color:var(--accent);color:var(--accent)}
+    .exam-progress{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:3px}
+    .exam-dot{width:7px;height:7px;border-radius:50%;background:#e2d9cc}
+    .exam-dot.ok{background:#166534} .exam-dot.no{background:#dc2626} .exam-dot.mrk{background:#d97706}
 
     /* ── Mobile Responsive ── */
     @media(max-width:768px){
@@ -472,8 +573,7 @@ const Tags=({q})=>(
     {q.subtopic&&<span className="tag t-sub">{q.subtopic}</span>}
     {q.difficulty==='hard'&&<span className="tag t-hard">Hard</span>}
     {q.difficulty==='easy'&&<span className="tag t-easy">Easy</span>}
-    {(q.year_tags||[]).length>1&&(q.year_tags||[]).map(y=><span key={y} className="tag t-yr">{y}</span>)}
-    {q.is_repeated?<span className="tag t-rep">⟳ Repeated</span>:null}
+    {(q.year_tags||[]).length>1&&<span className="tag t-rep" title="This exact question appeared in multiple UPSC years">Same Q also in {(q.year_tags||[]).filter(y=>y!==q.year_first).join(', ')}</span>}
     {q.frequency>1&&<span className="freq-tag">UPSC {q.frequency}×</span>}
   </div>
 );
@@ -652,9 +752,17 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
   const [filters,setFilters]=React.useState(initFilters);
   const [practiceCount,setPracticeCount]=React.useState(quickMode?20:30);
   const [showRelated,setShowRelated]=React.useState(false);
+  const [viewMode,setViewMode]=React.useState('card');
+  const [pageAnswers,setPageAnswers]=React.useState({});
+  const [marked,setMarked]=React.useState(new Set());
+  const [availableCount,setAvailableCount]=React.useState(null);
+  const [examMode,setExamMode]=React.useState(false);
+  const [showExamWarn,setShowExamWarn]=React.useState(false);
+  const examTotalSecs=React.useMemo(()=>qs.length*72,[qs.length]);
+  const examRemaining=useCountdown(examTotalSecs,examMode);
   const {data:topics}=useFetch(`${API}/topics`);
   const timerKey=idx;
-  const secs=useTimer(!result&&qs.length>0&&started,timerKey);
+  const secs=useTimer(!result&&qs.length>0&&started&&!examMode,timerKey);
   const secsRef=React.useRef(0);
   React.useEffect(()=>{secsRef.current=secs},[secs]);
 
@@ -662,18 +770,59 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
     if(!started)return;
     const p=new URLSearchParams({limit:Math.min(practiceCount*2,500),...Object.fromEntries(Object.entries(filters).filter(([,v])=>v))});
     fetch(`${API}/questions?${p}`).then(r=>r.json()).then(d=>{
-      let list=(d.questions||[]).sort(()=>Math.random()-0.5).slice(0,practiceCount);
-      setQs(list);setIdx(0);setSel(null);setResult(null);setInsight(null);setHist([]);setShowRelated(false);
+      // Deduplicate repeated questions (same text from multiple years) — keep first occurrence
+      const seen=new Set();
+      const deduped=(d.questions||[]).filter(q=>{
+        const key=q.question.slice(0,60).toLowerCase();
+        if(seen.has(key))return false;
+        seen.add(key);return true;
+      });
+      let list=deduped.sort(()=>Math.random()-0.5).slice(0,Math.min(practiceCount,100));
+      setQs(list);setIdx(0);setSel(null);setResult(null);setInsight(null);setHist([]);setShowRelated(false);setPageAnswers({});setMarked(new Set());
     });
   },[JSON.stringify(filters),started,practiceCount]);
 
   React.useEffect(()=>{load()},[load]);
   React.useEffect(()=>{setSel(null);setResult(null);setInsight(null);setShowRelated(false)},[idx]);
 
+  // Fetch available count for setup screen whenever filters change
+  React.useEffect(()=>{
+    if(started)return;
+    const p=new URLSearchParams({limit:500,...Object.fromEntries(Object.entries(filters).filter(([,v])=>v))});
+    fetch(`${API}/questions?${p}`).then(r=>r.json()).then(d=>{
+      const cnt=(d.questions||[]).length;
+      setAvailableCount(cnt);
+      const maxOpt=Math.max(10,Math.ceil(cnt/10)*10);
+      if(practiceCount>maxOpt)setPracticeCount(maxOpt);
+    }).catch(()=>setAvailableCount(null));
+  },[JSON.stringify(filters),started]);
+
   const q=qs[idx];
   const tc=secs>120?'danger':secs>60?'warn':'';
   const topicNames=topics?Object.keys(topics):[];
   const isBm=q&&bookmarks.includes(q.id);
+  const isMrk=marked.has(idx);
+  const toggleMark=i=>{setMarked(prev=>{const n=new Set(prev);n.has(i)?n.delete(i):n.add(i);return n;});};
+
+  // Exam mode — auto-exit when timer hits 0
+  React.useEffect(()=>{if(examMode&&examRemaining===0)exitExam();},[examRemaining,examMode]);
+
+  const enterExam=()=>{
+    setViewMode('fullpage');setExamMode(true);
+    const el=document.documentElement;
+    if(el.requestFullscreen)el.requestFullscreen().catch(()=>{});
+    else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+  };
+  const exitExam=()=>{
+    setExamMode(false);setShowExamWarn(false);
+    if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+  };
+  // Detect browser ESC exiting fullscreen while exam is active
+  React.useEffect(()=>{
+    const h=()=>{if(!document.fullscreenElement&&examMode)setShowExamWarn(true);};
+    document.addEventListener('fullscreenchange',h);
+    return()=>document.removeEventListener('fullscreenchange',h);
+  },[examMode]);
 
   const submit=async()=>{
     if(!sel||result)return;
@@ -701,6 +850,19 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
     return'rev';
   };
 
+  const submitPageQ=async(absIdx)=>{
+    const pa=pageAnswers[absIdx]||{};
+    if(!pa.sel||pa.result)return;
+    const pq=qs[absIdx];
+    try{
+      const r=await fetch(`${API}/attempt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question_id:pq.id,selected_option:pa.sel,time_taken_sec:0})});
+      const d=await r.json();
+      setPageAnswers(prev=>({...prev,[absIdx]:{...prev[absIdx],result:d}}));
+      const nh=[...hist];nh[absIdx]={ok:d.is_correct};setHist(nh);
+      if(onAttempt)onAttempt(d.is_correct);
+    }catch(e){}
+  };
+
   const relatedTopics=q?.topic?TOPICS_RELATED[q.topic]||[]:[];
 
   if(!started){
@@ -718,10 +880,19 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
           </div>
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:10,marginBottom:20}}>
             <div className="form-group" style={{marginBottom:0}}>
-              <label className="form-label">Questions</label>
-              <select className="form-input form-select" value={practiceCount} onChange={e=>setPracticeCount(+e.target.value)}>
-                {[10,20,30,50].map(n=><option key={n} value={n}>{n} Qs</option>)}
-              </select>
+              <label className="form-label">
+                Questions
+                {availableCount!==null&&<span style={{color:'var(--accent2)',fontWeight:600,marginLeft:6,fontSize:'.7rem'}}>({availableCount} available)</span>}
+              </label>
+              {(()=>{
+                const max=Math.min(availableCount!==null?Math.max(10,Math.ceil(availableCount/10)*10):100,100);
+                const opts=[];for(let i=10;i<=max;i+=10)opts.push(i);
+                return(
+                  <select className="form-input form-select" value={Math.min(practiceCount,max)} onChange={e=>setPracticeCount(+e.target.value)}>
+                    {opts.map(n=><option key={n} value={n}>{n} Qs{n===max&&availableCount!==null?' (max)':''}</option>)}
+                  </select>
+                );
+              })()}
             </div>
             <div className="form-group" style={{marginBottom:0}}>
               <label className="form-label">Difficulty</label>
@@ -765,15 +936,25 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
 
       <div className="quiz-topbar">
         <div>
-          <div className="q-progress-text">Q <b>{idx+1}</b> / <b>{qs.length}</b></div>
+          {viewMode==='card'
+            ?<div className="q-progress-text">Q <b>{idx+1}</b> / <b>{qs.length}</b></div>
+            :<div className="q-progress-text">Page <b>{Math.floor(idx/4)+1}</b> / <b>{Math.ceil(qs.length/4)}</b><span style={{color:'var(--muted)',fontSize:'.78rem',marginLeft:6}}>({qs.length} Qs)</span></div>
+          }
           <div className="q-dots">{qs.slice(0,Math.min(25,qs.length)).map((_,i)=>(
-            <div key={i} className={`qdot ${i===idx?'cur':hist[i]?.ok?'ok':hist[i]?'no':''}`}/>
+            <div key={i} className={`qdot ${viewMode==='card'?i===idx?'cur':'':Math.floor(i/4)===Math.floor(idx/4)?'cur':''} ${hist[i]?.ok?'ok':hist[i]?.ok===false?'no':marked.has(i)?'mrk':''}`}/>
           ))}</div>
         </div>
-        <div className={`timer ${tc}`}>⏱ {fmt(secs)}</div>
+        <div style={{display:'flex',gap:8,alignItems:'center'}}>
+          <div className={`timer ${tc}`}>⏱ {fmt(secs)}</div>
+          <div className="view-toggle">
+            <button className={`view-btn ${viewMode==='card'?'on':''}`} onClick={()=>setViewMode('card')} title="Card mode">🃏 Card</button>
+            <button className={`view-btn ${viewMode==='fullpage'?'on':''}`} onClick={()=>setViewMode('fullpage')} title="Full page view">📄 Page</button>
+          </div>
+          <button className="btn-exam-mode" onClick={enterExam} title={`Fullscreen exam mode — ${qs.length} Qs, ${Math.round(qs.length*72/60)} min`}>🎓 Exam Mode</button>
+        </div>
       </div>
 
-      {q&&(
+      {viewMode==='card'&&q&&(
         <div className="q-card">
           <Tags q={q}/>
           <p className="q-text">{q.question}</p>
@@ -788,6 +969,7 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
             <div className="submit-row">
               <button className="btn-submit" onClick={submit} disabled={!sel||loadingI}>{loadingI?<><Spin/>&nbsp;Analysing…</>:'Submit Answer'}</button>
               <button className="btn-sec" onClick={()=>setIdx(i=>i+1)} disabled={idx>=qs.length-1}>Skip</button>
+              <button className={`btn-mark ${isMrk?'on':''}`} onClick={()=>toggleMark(idx)}>🚩 {isMrk?'Marked':'Mark'}</button>
               <button className={`btn-bk ${isBm?'on':''}`} onClick={()=>{const n=isBm?bookmarks.filter(id=>id!==q.id):[...bookmarks,q.id];setBm(n);S.set('bookmarks',n)}}>{isBm?'🔖':'📌'}</button>
             </div>
           )}
@@ -802,7 +984,11 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
           )}
           {(loadingI||insight)&&(
             <div className="insight-card">
-              <div className="insight-head"><span>🤖</span><span className="insight-title">AI Mentor Analysis</span></div>
+              <div className="insight-head">
+                <span>🤖</span>
+                <span className="insight-title">AI Mentor Analysis</span>
+                {q?.answer_source==='web_consensus'&&<span style={{marginLeft:'auto',fontSize:'.7rem',background:'rgba(215,119,6,.12)',color:'#b45309',border:'1px solid rgba(215,119,6,.3)',borderRadius:4,padding:'2px 8px',fontWeight:700}}>⚠️ Consensus Answer</span>}
+              </div>
               <div className="insight-body">{loadingI?<span className="shimmer">Fetching UPSC patterns…</span>:insight}</div>
             </div>
           )}
@@ -816,16 +1002,202 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
               </div>
             </div>
           )}
+          {result&&(
+            <div style={{marginTop:16}}>
+              {idx<qs.length-1
+                ?<button className="btn-next-q" onClick={()=>{setIdx(i=>i+1);setResult(null);setSel(null);setInsight(null);setShowRelated(false);}}>Next Question →</button>
+                :<button className="btn-next-q finish" onClick={load}>Finish &amp; Restart 🔄</button>}
+            </div>
+          )}
         </div>
       )}
 
-      <div className="q-nav">
-        <button className="btn-nav" onClick={()=>setIdx(i=>i-1)} disabled={idx===0}>← Prev</button>
-        <span style={{fontSize:'.78rem',color:'var(--muted)'}}>{result?(result.is_correct?'✅ Got it':'❌ Missed'):'—'}</span>
-        {idx<qs.length-1
-          ?<button className="btn-nav pri" onClick={()=>setIdx(i=>i+1)}>Next →</button>
-          :<button className="btn-nav pri" onClick={load}>Restart 🔄</button>}
-      </div>
+      {viewMode==='card'&&!result&&(
+        <div className="q-nav">
+          <button className="btn-nav" onClick={()=>setIdx(i=>i-1)} disabled={idx===0}>← Prev</button>
+          <span style={{fontSize:'.78rem',color:'var(--muted)'}}>—</span>
+          {idx<qs.length-1
+            ?<button className="btn-nav pri" onClick={()=>setIdx(i=>i+1)}>Skip →</button>
+            :<button className="btn-nav pri" onClick={load}>Restart 🔄</button>}
+        </div>
+      )}
+
+      {/* ── EXAM MODE OVERLAY ── */}
+      {examMode&&(()=>{
+        const pageStart=Math.floor(idx/4)*4;
+        const totalPages=Math.ceil(qs.length/4);
+        const curPage=Math.floor(idx/4);
+        const cols=[[0,1],[2,3]].map(pair=>pair.map(pi=>pageStart+pi).filter(ai=>ai<qs.length));
+        const fmtQ=(text,opt_a)=>{
+          const aText=(opt_a||'').replace(/^\(a\)\s*/,'').trim().slice(0,30);
+          if(aText){const esc=aText.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');const cut=text.search(new RegExp('\\n+\\(a\\)\\s*'+esc));if(cut>0)text=text.slice(0,cut).trim();}
+          if(!/\n/.test(text))text=text.replace(/ (\d{1,2})\. /g,'\n$1. ');
+          return text;
+        };
+        const ec=examRemaining<300?'danger':examRemaining<600?'warn':'';
+        const answered=Object.keys(pageAnswers).length;
+        return(
+          <div className={`exam-overlay active`}>
+            <div className="exam-topbar">
+              <div className="exam-topbar-left">
+                <div className="exam-topbar-title">UPSC Civil Services Exam — Simulation</div>
+                <div className="exam-topbar-sub">Page {curPage+1}/{totalPages} &nbsp;·&nbsp; {qs.length} Questions &nbsp;·&nbsp; Answered: {answered}/{qs.length}</div>
+                <div className="exam-progress">
+                  {qs.slice(0,Math.min(50,qs.length)).map((_,i)=>(
+                    <div key={i} className={`exam-dot ${hist[i]?.ok?'ok':hist[i]?.ok===false?'no':marked.has(i)?'mrk':''}`}/>
+                  ))}
+                </div>
+              </div>
+              <div className={`exam-countdown ${ec}`}>{fmt(examRemaining)}</div>
+              <div className="exam-topbar-right">
+                <button className="btn-exam-exit" onClick={()=>setShowExamWarn(true)}>Exit Exam</button>
+              </div>
+            </div>
+            <div className="exam-content">
+              <div className="upsc-booklet">
+                <div className="upsc-booklet-header">
+                  <span className="upsc-booklet-title">UPSC Civil Services (P) Exam — GS Paper I</span>
+                  <span className="upsc-booklet-pnum">Page {curPage+1} / {totalPages} &nbsp;|&nbsp; Qs {pageStart+1}–{Math.min(pageStart+4,qs.length)}</span>
+                </div>
+                <div className="upsc-booklet-cols">
+                  {cols.map((col,ci)=>(
+                    <div key={ci} className="upsc-booklet-col">
+                      {col.map(ai=>{
+                        const pq=qs[ai];const pa=pageAnswers[ai]||{};
+                        const getOpt=o=>{if(!pa.result)return pa.sel===o?'sel':'';if(o===pa.result.correct_option)return'cor';if(o===pa.sel&&!pa.result.is_correct)return'wrg';return'rev';};
+                        return(
+                          <div key={pq.id||ai} className="upsc-bq">
+                            <div className="upsc-bq-text">
+                              <span className="upsc-bq-num">{pq.q_num}.{marked.has(ai)&&<span className="upsc-bq-mrk" title="Marked"/>}&nbsp;</span>{fmtQ(pq.question,pq.option_a)}
+                            </div>
+                            <div className="upsc-bq-opts">
+                              {[['a',pq.option_a],['b',pq.option_b],['c',pq.option_c],['d',pq.option_d]].map(([l,t])=>(
+                                <button key={l} className={`upsc-bq-opt ${getOpt(l)}`}
+                                  onClick={()=>!pa.result&&setPageAnswers(prev=>({...prev,[ai]:{...prev[ai],sel:l}}))}
+                                  disabled={!!pa.result}>
+                                  <span className="upsc-bq-opt-lbl">({l})</span>{t}
+                                </button>
+                              ))}
+                            </div>
+                            <div className="upsc-bq-foot">
+                              {!pa.result&&<button className="upsc-bq-submit" onClick={()=>submitPageQ(ai)} disabled={!pa.sel}>Submit</button>}
+                              {pa.result&&<span className={`upsc-bq-result ${pa.result.is_correct?'ok':'no'}`}>{pa.result.is_correct?'Correct':`Ans: (${pa.result.correct_option?.toUpperCase()})`}</span>}
+                              <button className={`upsc-bq-markbtn ${marked.has(ai)?'on':''}`} onClick={()=>toggleMark(ai)}>🚩 {marked.has(ai)?'Marked':'Mark'}</button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="page-nav">
+                <button className="btn-nav" onClick={()=>setIdx(Math.max(0,pageStart-4))} disabled={pageStart===0}>← Prev Page</button>
+                <span className="page-info">Page {curPage+1} of {totalPages}</span>
+                {pageStart+4<qs.length
+                  ?<button className="btn-nav pri" onClick={()=>setIdx(pageStart+4)}>Next Page →</button>
+                  :<button className="btn-nav pri" onClick={exitExam}>Finish Exam ✓</button>}
+              </div>
+            </div>
+            {showExamWarn&&(
+              <div className="exam-warn-overlay">
+                <div className="exam-warn-box">
+                  <div className="exam-warn-title">⚠️ Exit Exam?</div>
+                  <div className="exam-warn-sub">Your timer will stop and your session will end. Your attempted answers are already saved.<br/><br/>Time remaining: <b>{fmt(examRemaining)}</b></div>
+                  <div className="exam-warn-btns">
+                    <button className="btn-exam-keep" onClick={()=>{setShowExamWarn(false);if(!document.fullscreenElement&&examMode){const el=document.documentElement;if(el.requestFullscreen)el.requestFullscreen().catch(()=>{});}}}>Keep Going</button>
+                    <button className="btn-exam-quit" onClick={exitExam}>Exit Exam</button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {viewMode==='fullpage'&&(()=>{
+        const pageStart=Math.floor(idx/4)*4;
+        const totalPages=Math.ceil(qs.length/4);
+        const curPage=Math.floor(idx/4);
+        // split into 2 columns: col0=[q0,q1], col1=[q2,q3]
+        const cols=[[0,1],[2,3]].map(pair=>pair.map(pi=>pageStart+pi).filter(ai=>ai<qs.length));
+        // Format question text for booklet display
+        const fmtQ=(text,opt_a)=>{
+          // 1. Strip embedded options block (56 questions have options inside question text)
+          const aText=(opt_a||'').replace(/^\(a\)\s*/,'').trim().slice(0,30);
+          if(aText){
+            const esc=aText.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+            const cut=text.search(new RegExp('\\n+\\(a\\)\\s*'+esc));
+            if(cut>0)text=text.slice(0,cut).trim();
+          }
+          // 2. Only add numbered-statement line breaks if text has no existing newlines
+          //    Use \d{1,2} (not \d+) to avoid breaking 4-digit years like "2002."
+          if(!/\n/.test(text)){
+            text=text.replace(/ (\d{1,2})\. /g,'\n$1. ');
+          }
+          return text;
+        };
+        return(
+          <>
+            <div className="upsc-booklet">
+              <div className="upsc-booklet-header">
+                <span className="upsc-booklet-title">UPSC Civil Services (P) Exam — GS Paper I</span>
+                <span className="upsc-booklet-pnum">Page {curPage+1} / {totalPages} &nbsp;|&nbsp; Qs {pageStart+1}–{Math.min(pageStart+4,qs.length)} of {qs.length}</span>
+              </div>
+              <div className="upsc-booklet-cols">
+                {cols.map((col,ci)=>(
+                  <div key={ci} className="upsc-booklet-col">
+                    {col.map(ai=>{
+                      const pq=qs[ai];
+                      const pa=pageAnswers[ai]||{};
+                      const getOpt=o=>{
+                        if(!pa.result)return pa.sel===o?'sel':'';
+                        if(o===pa.result.correct_option)return'cor';
+                        if(o===pa.sel&&!pa.result.is_correct)return'wrg';
+                        return'rev';
+                      };
+                      return(
+                        <div key={pq.id||ai} className="upsc-bq">
+                          <div className="upsc-bq-text">
+                            <span className="upsc-bq-num">{pq.q_num}.{marked.has(ai)&&<span className="upsc-bq-mrk" title="Marked for review"/>}&nbsp;</span>{fmtQ(pq.question,pq.option_a)}
+                          </div>
+                          <div className="upsc-bq-opts">
+                            {[['a',pq.option_a],['b',pq.option_b],['c',pq.option_c],['d',pq.option_d]].map(([l,t])=>(
+                              <button key={l} className={`upsc-bq-opt ${getOpt(l)}`}
+                                onClick={()=>!pa.result&&setPageAnswers(prev=>({...prev,[ai]:{...prev[ai],sel:l}}))}
+                                disabled={!!pa.result}>
+                                <span className="upsc-bq-opt-lbl">({l})</span>{t}
+                              </button>
+                            ))}
+                          </div>
+                          <div className="upsc-bq-foot">
+                            {!pa.result&&<button className="upsc-bq-submit" onClick={()=>submitPageQ(ai)} disabled={!pa.sel}>Submit</button>}
+                            {pa.result&&<span className={`upsc-bq-result ${pa.result.is_correct?'ok':'no'}`}>{pa.result.is_correct?'✔ Correct':`✘ Ans: (${pa.result.correct_option?.toUpperCase()})`}</span>}
+                            <button className={`upsc-bq-markbtn ${marked.has(ai)?'on':''}`} onClick={()=>toggleMark(ai)}>🚩 {marked.has(ai)?'Marked':'Mark'}</button>
+                          </div>
+                          {pa.result?.ai_insight&&(
+                            <div className="insight-card" style={{marginTop:8,fontSize:'.82rem'}}>
+                              <div className="insight-head"><span>🤖</span><span className="insight-title">AI Mentor</span></div>
+                              <div className="insight-body">{pa.result.ai_insight}</div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="page-nav">
+              <button className="btn-nav" onClick={()=>setIdx(Math.max(0,pageStart-4))} disabled={pageStart===0}>← Prev Page</button>
+              <span className="page-info">Page {curPage+1} of {totalPages}</span>
+              {pageStart+4<qs.length
+                ?<button className="btn-nav pri" onClick={()=>setIdx(pageStart+4)}>Next Page →</button>
+                :<button className="btn-nav pri" onClick={()=>{setPageAnswers({});load();}}>Restart 🔄</button>}
+            </div>
+          </>
+        );
+      })()}
     </div>
   );
 };
@@ -1383,7 +1755,7 @@ const SidebarContent=({user,view,go,theme,toggleTheme,onLogout,onClose})=>(
 const App=()=>{
   const [user,setUser]=React.useState(()=>S.get('upsc_user',null));
   const [view,setView]=React.useState('dashboard');
-  const [theme,setTheme]=React.useState(()=>S.get('theme','dark'));
+  const [theme,setTheme]=React.useState(()=>S.get('theme','light'));
   const [drawerOpen,setDrawerOpen]=React.useState(false);
   const [showChallenge,setShowChallenge]=React.useState(false);
   const [quickPractice,setQuickPractice]=React.useState(false);

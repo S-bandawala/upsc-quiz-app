@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Optional
 
 import httpx
-from groq import Groq
+import anthropic
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -39,7 +39,8 @@ if _ENV.exists():
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR.parent / "data" / "upsc_beta.db"
 
-groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY", ""))
+haiku_client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
+HAIKU_MODEL  = "claude-haiku-4-5-20251001"
 
 # Tavily API key (optional — falls back to DuckDuckGo snippets)
 TAVILY_KEY = os.getenv("TAVILY_API_KEY", "")
@@ -136,45 +137,66 @@ async def web_search(query: str) -> str:
             return "Web search unavailable."
 
 
-async def generate_insight(question: dict, selected: str, web_ctx: str) -> str:
-    """Use Claude to generate explanation + trap analysis."""
-    correct = question.get("correct_option", "?")
-    is_correct = selected.lower() == (correct or "").lower()
+def build_insight_prompt(question: dict, selected: str) -> str:
+    """Build structured 4-section mentor prompt covering all 3 wrong options."""
+    correct   = (question.get("correct_option") or "?").strip().lower()
+    selected  = selected.lower().strip()
+    wrong_opts = [l for l in ["a", "b", "c", "d"] if l != correct]
 
-    prompt = f"""You are a UPSC expert mentor. A student just attempted this question:
+    wrong_lines = "\n".join(
+        f'You may be inclined to choose ({l.upper()}) "{question.get("option_"+l,"")[:80]}" — explain in 1 sentence why this is tempting, then 1 sentence why it is wrong.'
+        for l in wrong_opts
+    )
 
-QUESTION: {question['question']}
+    freq = question.get('frequency', 1) or 1
+    freq_note = f"HIGH PRIORITY — appeared {freq} times in UPSC." if freq > 1 else ""
+
+    return f"""You are a UPSC CSE expert mentor. A student just attempted this official UPSC question.
+
+QUESTION (UPSC {question.get('year_first','')}, Q.{question.get('q_num','')}):
+{question['question']}
+
 (a) {question.get('option_a','')}
 (b) {question.get('option_b','')}
 (c) {question.get('option_c','')}
 (d) {question.get('option_d','')}
 
-Student chose: ({selected}) | Correct answer: ({correct})
-Result: {'CORRECT ✓' if is_correct else 'WRONG ✗'}
-
+Correct answer: ({correct.upper()})
 Topic: {question.get('topic','')} > {question.get('subtopic','')}
-This question appeared in UPSC years: {question.get('year_tags', [])}
-{"It has appeared " + str(question.get('frequency',1)) + " times — HIGH PRIORITY!" if question.get('frequency',1) > 1 else ""}
+{freq_note}
 
-Web context about this topic:
-{web_ctx[:1500]}
+Write your analysis in EXACTLY these 4 sections with these exact headers:
 
-Write a concise insight (4-6 lines) covering:
-1. Why the correct answer is right (core fact/logic)
-2. Why the wrong options are traps (if student got it wrong — explain their mistake)
-3. UPSC pattern: what this question tests and how UPSC usually frames it
-4. Memory tip: one-line mnemonic or trick to never forget this
+CORRECT ANSWER: WHY ({correct.upper()}) IS RIGHT
+State the single core fact or principle that makes ({correct}) right. Max 2 sentences. Be precise.
 
-Be direct. No fluff. Use plain English.
+TRAP ANALYSIS
+For each wrong option, write exactly 2 sentences using this framing:
+{wrong_lines}
+
+UPSC PATTERN
+What specific skill does UPSC test here? How is this question type typically framed? Max 2 sentences.
+
+LOCK IT IN
+One sharp memory device — mnemonic, acronym, vivid analogy, or key contrast. Must be specific to THIS answer.
+
+Rules:
+- Total response: 150-200 words
+- No filler phrases like "Great question" or "In conclusion"
+- Speak directly to the student
 """
 
-    response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        max_tokens=600,
+
+async def generate_insight(question: dict, selected: str, web_ctx: str) -> str:
+    """Generate structured explanation using Claude Haiku."""
+    prompt = build_insight_prompt(question, selected)
+    resp = haiku_client.messages.create(
+        model=HAIKU_MODEL,
+        max_tokens=450,
         temperature=0.3,
         messages=[{"role": "user", "content": prompt}]
     )
-    return response.choices[0].message.content.strip()
+    return resp.content[0].text.strip()
 
 
 # ── Endpoints ──────────────────────────────────────────────────────────────────
@@ -246,7 +268,7 @@ def list_questions(
     total = conn.execute(f"SELECT COUNT(*) FROM questions {where}", params).fetchone()[0]
     conn.close()
 
-    # Don't leak correct_option in list view
+    # Don't leak correct_option in list view (keep answer_source for disclaimer)
     questions = []
     for r in rows:
         d = row_to_dict(r)
