@@ -1,0 +1,33 @@
+UPSC Quiz App — Setup Instructions
+=====================================
+
+PREREQUISITES
+-------------
+- Python 3.10 or higher
+- That's it. No API key needed.
+
+SETUP STEPS
+-----------
+
+1. Install dependencies:
+   pip install -r requirements.txt
+
+2. Start the backend (in one terminal):
+   cd backend
+   python -m uvicorn main:app --reload --port 8000
+
+3. Start the frontend (in another terminal):
+   cd frontend
+   python -m http.server 3000
+
+4. Open browser:
+   http://localhost:3000
+
+Done. The app works fully offline.
+
+WHAT'S INCLUDED
+---------------
+- 1100 UPSC CSE Prelims questions (2015-2025)
+- All answers pre-loaded
+- AI explanations pre-cached for every question (no API calls needed)
+- Scholar theme, Exam Mode, Mock Tests, Stats Dashboard

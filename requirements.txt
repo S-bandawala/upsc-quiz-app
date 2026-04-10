@@ -1,5 +1,5 @@
-fastapi
-uvicorn[standard]
-groq
-httpx
-pymupdf
+fastapi==0.135.2
+uvicorn==0.42.0
+anthropic==0.87.0
+httpx==0.28.1
+pydantic==2.12.5
