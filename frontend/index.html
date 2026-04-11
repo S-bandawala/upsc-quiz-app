@@ -1075,7 +1075,7 @@ const QuizView=({user,onAttempt,initFilters={},quickMode=false,onExitQuick=()=>{
                                 <button key={l} className={`upsc-bq-opt ${getOpt(l)}`}
                                   onClick={()=>!pa.result&&setPageAnswers(prev=>({...prev,[ai]:{...prev[ai],sel:l}}))}
                                   disabled={!!pa.result}>
-                                  <span className="upsc-bq-opt-lbl">({l})</span>{t}
+                                  <span className="upsc-bq-opt-lbl">({l})</span>{(t||'').replace(/^\s*\([a-d]\)\s*/i,'').trim()}
                                 </button>
                               ))}
                             </div>
@@ -1211,14 +1211,38 @@ const MockTest=({user})=>{
   const [phase,setPhase]=React.useState('setup'); // setup | running | result
   const [qs,setQs]=React.useState([]);
   const [idx,setIdx]=React.useState(0);
+  const [mockViewMode,setMockViewMode]=React.useState('card'); // 'card' | 'page'
+  const [mockExamMode,setMockExamMode]=React.useState(false);
+  const [showMockExamWarn,setShowMockExamWarn]=React.useState(false);
   const [answers,setAnswers]=React.useState({});
+  const [pageResults,setPageResults]=React.useState({}); // per-question results in page view
   const [results,setResults]=React.useState(null);
+  const stripOpt=t=>(t||'').replace(/^\s*\([a-d]\)\s*/i,'').trim();
   const {data:topicsData}=useFetch(`${API}/topics`);
   const topicNames=topicsData?Object.keys(topicsData):[];
   const totalSecs=config.time*60;
   const remaining=useCountdown(totalSecs,phase==='running');
 
   React.useEffect(()=>{if(remaining===0&&phase==='running')finalize()},[remaining]);
+
+  // Auto-exit exam mode when timer hits 0
+  React.useEffect(()=>{if(mockExamMode&&remaining===0)exitMockExam();},[remaining,mockExamMode]);
+
+  const enterMockExam=()=>{
+    setMockViewMode('page');setMockExamMode(true);
+    const el=document.documentElement;
+    if(el.requestFullscreen)el.requestFullscreen().catch(()=>{});
+    else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+  };
+  const exitMockExam=()=>{
+    setMockExamMode(false);setShowMockExamWarn(false);
+    if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+  };
+  React.useEffect(()=>{
+    const h=()=>{if(!document.fullscreenElement&&mockExamMode)setShowMockExamWarn(true);};
+    document.addEventListener('fullscreenchange',h);
+    return()=>document.removeEventListener('fullscreenchange',h);
+  },[mockExamMode]);
 
   const launch=async()=>{
     const p=new URLSearchParams({limit:Math.min(config.count*2,500)});
@@ -1239,8 +1263,9 @@ const MockTest=({user})=>{
     for(const q of qs){
       const sel=answers[q.id];
       const skipped=!sel;
-      const submitSel=sel||'skip';
-      const r=await fetch(`${API}/attempt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question_id:q.id,selected_option:submitSel,time_taken_sec:0})}).then(r=>r.json());
+      // reuse already-fetched result if available (page view per-Q submit)
+      const existing=pageResults[q.id];
+      const r=existing||await fetch(`${API}/attempt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question_id:q.id,selected_option:sel||'skip',time_taken_sec:0})}).then(res=>res.json());
       if(!skipped){
         total++;
         if(r.is_correct)correct++;
@@ -1252,6 +1277,13 @@ const MockTest=({user})=>{
     }
     const mocks=S.get('mocks_done',0)+1;S.set('mocks_done',mocks);
     setResults({correct,total,attempted:Object.keys(answers).length,skipped:qs.length-Object.keys(answers).length,topicMap,timeUsed:totalSecs-remaining,reviewList});
+  };
+
+  const submitMockPageQ=async(q)=>{
+    const sel=answers[q.id];
+    if(!sel||pageResults[q.id])return;
+    const r=await fetch(`${API}/attempt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question_id:q.id,selected_option:sel,time_taken_sec:0})}).then(res=>res.json());
+    setPageResults(prev=>({...prev,[q.id]:r}));
   };
 
   const [reviewFilter,setReviewFilter]=React.useState('all'); // all | wrong | correct | skipped
@@ -1350,40 +1382,161 @@ const MockTest=({user})=>{
   if(phase==='running'){
     const q=qs[idx];
     const tc=remaining<300?'danger':remaining<600?'warn':'';
+    const attempted=Object.keys(answers).length;
+    const mockTitle=mode==='topic'?`${config.topics[0]||'All Topics'} Mock`:'Custom Mock Test';
+
+    // ── PAGE VIEW (booklet style) ──────────────────────────────────
+    const pageView=(inExam=false)=>{
+      const pageSize=4;
+      const pageStart=Math.floor(idx/pageSize)*pageSize;
+      const totalPages=Math.ceil(qs.length/pageSize);
+      const curPage=Math.floor(idx/pageSize);
+      const cols=[[0,1],[2,3]].map(pair=>pair.map(pi=>pageStart+pi).filter(ai=>ai<qs.length));
+      const fmtQ=(text,opt_a)=>{
+        const aText=(opt_a||'').replace(/^\(a\)\s*/,'').trim().slice(0,30);
+        if(aText){const esc=aText.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');const cut=text.search(new RegExp('\\n+\\(a\\)\\s*'+esc));if(cut>0)text=text.slice(0,cut).trim();}
+        if(!/\n/.test(text))text=text.replace(/ (\d{1,2})\. /g,'\n$1. ');
+        return text;
+      };
+      return(
+        <div className="exam-content">
+          <div className="upsc-booklet">
+            <div className="upsc-booklet-header">
+              <span className="upsc-booklet-title">{mockTitle} — GS Paper I</span>
+              <span className="upsc-booklet-pnum">Page {curPage+1} / {totalPages} &nbsp;|&nbsp; Qs {pageStart+1}–{Math.min(pageStart+pageSize,qs.length)}</span>
+            </div>
+            <div className="upsc-booklet-cols">
+              {cols.map((col,ci)=>(
+                <div key={ci} className="upsc-booklet-col">
+                  {col.map(ai=>{
+                    const pq=qs[ai];if(!pq)return null;
+                    const sel=answers[pq.id];
+                    const res=pageResults[pq.id];
+                    const getOpt=o=>{if(!res)return sel===o?'sel':'';if(o===res.correct_option)return'cor';if(o===sel&&!res.is_correct)return'wrg';return'rev';};
+                    return(
+                      <div key={pq.id||ai} className="upsc-bq">
+                        <div className="upsc-bq-text">
+                          <span className="upsc-bq-num">{pq.q_num||ai+1}.&nbsp;</span>{fmtQ(pq.question,pq.option_a)}
+                        </div>
+                        <div className="upsc-bq-opts">
+                          {[['a',pq.option_a],['b',pq.option_b],['c',pq.option_c],['d',pq.option_d]].map(([l,t])=>(
+                            <button key={l} className={`upsc-bq-opt ${getOpt(l)}`}
+                              onClick={()=>!res&&(setAnswers(a=>({...a,[pq.id]:l})),setIdx(ai))}
+                              disabled={!!res}>
+                              <span className="upsc-bq-opt-lbl">({l})</span>{stripOpt(t)}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="upsc-bq-foot">
+                          {!res&&<button className="upsc-bq-submit" onClick={()=>submitMockPageQ(pq)} disabled={!sel}>Submit</button>}
+                          {res&&<span className={`upsc-bq-result ${res.is_correct?'ok':'no'}`}>{res.is_correct?'✅ Correct':`❌ Ans: (${res.correct_option?.toUpperCase()})`}</span>}
+                        </div>
+                        {res?.ai_insight&&(
+                          <div className="insight-card" style={{marginTop:8,fontSize:'.82rem'}}>
+                            <div className="insight-head"><span>🤖</span><span className="insight-title">AI Mentor</span></div>
+                            <div className="insight-body">{res.ai_insight}</div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+            <div className="upsc-booklet-nav">
+              <button className="btn-nav" onClick={()=>setIdx(Math.max(0,pageStart-pageSize))} disabled={curPage===0}>← Prev Page</button>
+              <span style={{fontSize:'.8rem',color:'var(--muted)'}}>{attempted}/{qs.length} answered</span>
+              {curPage<totalPages-1
+                ?<button className="btn-nav pri" onClick={()=>setIdx(Math.min(qs.length-1,pageStart+pageSize))}>Next Page →</button>
+                :<button className="btn-nav pri" style={{background:'linear-gradient(135deg,var(--green),#10b981)'}} onClick={finalize}>Submit Test ✓</button>}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ── EXAM MODE OVERLAY ─────────────────────────────────────────
+    if(mockExamMode){
+      return(
+        <div className="exam-overlay active">
+          {showMockExamWarn&&(
+            <div className="exam-warn-overlay">
+              <div className="exam-warn-box">
+                <div style={{fontSize:'1.5rem',marginBottom:8}}>⚠️</div>
+                <div style={{fontWeight:700,fontSize:'1.05rem',marginBottom:6}}>Exit Exam Mode?</div>
+                <div style={{fontSize:'.88rem',color:'var(--muted)',marginBottom:18}}>Your answers are saved. The timer will keep running.</div>
+                <div style={{display:'flex',gap:10,justifyContent:'center'}}>
+                  <button className="btn-sec" onClick={()=>{setShowMockExamWarn(false);const el=document.documentElement;if(el.requestFullscreen)el.requestFullscreen().catch(()=>{})}}>Stay in Exam</button>
+                  <button className="btn-submit" style={{background:'var(--red)'}} onClick={exitMockExam}>Exit</button>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="exam-topbar">
+            <div className="exam-topbar-left">
+              <div className="exam-topbar-title">{mockTitle} — Simulation</div>
+              <div className="exam-topbar-sub">Page {Math.floor(idx/4)+1}/{Math.ceil(qs.length/4)} &nbsp;·&nbsp; {qs.length} Questions &nbsp;·&nbsp; Answered: {attempted}/{qs.length}</div>
+              <div className="exam-progress">
+                {qs.slice(0,Math.min(50,qs.length)).map((_,i)=>(
+                  <div key={i} className={`exam-dot ${answers[qs[i]?.id]?'ok':''}`}/>
+                ))}
+              </div>
+            </div>
+            <div className={`exam-countdown ${tc}`}>{fmt(remaining)}</div>
+            <div className="exam-topbar-right">
+              <button className="btn-exam-exit" onClick={()=>setShowMockExamWarn(true)}>Exit Exam</button>
+            </div>
+          </div>
+          {pageView(true)}
+        </div>
+      );
+    }
+
+    // ── CARD VIEW ────────────────────────────────────────────────
     return(
       <div className="mock-running fade-in">
         <div className="mock-header">
           <div>
-            <div className="mock-title">{mode==='topic'?`${config.topics[0]||'All Topics'} Mock`:'Custom Mock Test'}</div>
-            <div style={{fontSize:'.78rem',color:'var(--muted)',marginTop:2}}>Q{idx+1}/{qs.length} • Attempted: {Object.keys(answers).length}</div>
+            <div className="mock-title">{mockTitle}</div>
+            <div style={{fontSize:'.78rem',color:'var(--muted)',marginTop:2}}>Q{idx+1}/{qs.length} • Attempted: {attempted}</div>
           </div>
-          <div className={`mock-timer ${tc}`}>{fmt(remaining)}</div>
-          <button className="btn-submit-mock" onClick={finalize}>Submit Test ✓</button>
+          <div style={{display:'flex',gap:8,alignItems:'center'}}>
+            <button className={`view-btn ${mockViewMode==='card'?'on':''}`} onClick={()=>setMockViewMode('card')} title="Card view">🃏 Card</button>
+            <button className={`view-btn ${mockViewMode==='page'?'on':''}`} onClick={()=>setMockViewMode('page')} title="Page view">📄 Page</button>
+            <button className="btn-exam-mode" onClick={enterMockExam} title="Fullscreen exam mode">🎓 Exam Mode</button>
+          </div>
+          <div style={{display:'flex',gap:8,alignItems:'center'}}>
+            <div className={`mock-timer ${tc}`}>{fmt(remaining)}</div>
+            <button className="btn-submit-mock" onClick={finalize}>Submit Test ✓</button>
+          </div>
         </div>
 
-        <div className="mock-q-grid">
-          {qs.map((_,i)=>(
-            <div key={i} className={`mq-dot ${i===idx?'cur':answers[qs[i]?.id]?'att':''}`} onClick={()=>setIdx(i)}>{i+1}</div>
-          ))}
-        </div>
-
-        {q&&(
-          <div className="q-card">
-            <Tags q={q}/>
-            <p className="q-text">{q.question}</p>
-            <div className="options">
-              {[['a',q.option_a],['b',q.option_b],['c',q.option_c],['d',q.option_d]].map(([l,t])=>(
-                <button key={l} className={`opt-btn ${answers[q.id]===l?'sel':''}`}
-                  onClick={()=>setAnswers(a=>({...a,[q.id]:l}))}>
-                  <span className="opt-lbl">{l.toUpperCase()}</span><span>{t}</span>
-                </button>
+        {mockViewMode==='page'?pageView(false):(
+          <>
+            <div className="mock-q-grid">
+              {qs.map((_,i)=>(
+                <div key={i} className={`mq-dot ${i===idx?'cur':answers[qs[i]?.id]?'att':''}`} onClick={()=>setIdx(i)}>{i+1}</div>
               ))}
             </div>
-            <div className="q-nav" style={{marginTop:14}}>
-              <button className="btn-nav" onClick={()=>setIdx(i=>i-1)} disabled={idx===0}>← Prev</button>
-              <button className="btn-nav pri" onClick={()=>{if(idx<qs.length-1)setIdx(i=>i+1);else finalize()}}>{idx<qs.length-1?'Next →':'Finish ✓'}</button>
-            </div>
-          </div>
+            {q&&(
+              <div className="q-card">
+                <Tags q={q}/>
+                <p className="q-text">{q.question}</p>
+                <div className="options">
+                  {[['a',q.option_a],['b',q.option_b],['c',q.option_c],['d',q.option_d]].map(([l,t])=>(
+                    <button key={l} className={`opt-btn ${answers[q.id]===l?'sel':''}`}
+                      onClick={()=>setAnswers(a=>({...a,[q.id]:l}))}>
+                      <span className="opt-lbl">{l.toUpperCase()}</span><span>{t}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="q-nav" style={{marginTop:14}}>
+                  <button className="btn-nav" onClick={()=>setIdx(i=>i-1)} disabled={idx===0}>← Prev</button>
+                  <button className="btn-nav pri" onClick={()=>{if(idx<qs.length-1)setIdx(i=>i+1);else finalize()}}>{idx<qs.length-1?'Next →':'Finish ✓'}</button>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     );

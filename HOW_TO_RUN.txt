@@ -1,33 +1,47 @@
-UPSC Quiz App — Setup Instructions
-=====================================
+UPSC Scholar — How to Run Locally (7 Steps)
+============================================
 
-PREREQUISITES
--------------
-- Python 3.10 or higher
-- That's it. No API key needed.
+STEP 1 — Install Python
+  Download Python 3.10 or higher from: https://www.python.org/downloads/
+  During installation, CHECK the box: "Add Python to PATH"
 
-SETUP STEPS
------------
+STEP 2 — Extract the ZIP
+  Right-click the ZIP file → "Extract All"
+  Choose a location (e.g. your Desktop)
+  You will get a folder called: upsc_app
 
-1. Install dependencies:
-   pip install -r requirements.txt
+STEP 3 — Open Command Prompt
+  Press  Win + R  on your keyboard
+  Type:  cmd
+  Press  Enter
 
-2. Start the backend (in one terminal):
-   cd backend
-   python -m uvicorn main:app --reload --port 8000
+STEP 4 — Install Dependencies
+  In the Command Prompt, type these two commands one by one:
+    cd Desktop\upsc_app
+    pip install -r requirements.txt
 
-3. Start the frontend (in another terminal):
-   cd frontend
-   python -m http.server 3000
+STEP 5 — Start the Backend (Terminal 1)
+  In the same Command Prompt, type:
+    cd backend
+    python -m uvicorn main:app --port 8000
+  Leave this window OPEN (do not close it)
 
-4. Open browser:
-   http://localhost:3000
+STEP 6 — Start the Frontend (Terminal 2)
+  Open a NEW Command Prompt (Win + R → cmd → Enter)
+  Type:
+    cd Desktop\upsc_app\frontend
+    python -m http.server 3000
+  Leave this window OPEN too
 
-Done. The app works fully offline.
+STEP 7 — Open the App
+  Open any browser (Chrome, Edge, Firefox)
+  Go to: http://localhost:3000
+  The app is ready to use!
 
-WHAT'S INCLUDED
----------------
-- 1100 UPSC CSE Prelims questions (2015-2025)
-- All answers pre-loaded
-- AI explanations pre-cached for every question (no API calls needed)
-- Scholar theme, Exam Mode, Mock Tests, Stats Dashboard
+============================================
+NOTES:
+- No internet or API key required
+- 1100 UPSC questions (2015-2025) pre-loaded
+- Both terminal windows must stay open while using the app
+- To stop: close both terminal windows
+============================================
