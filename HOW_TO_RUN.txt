@@ -16,7 +16,7 @@ STEP 3 — Open Command Prompt
   Press  Enter
 
 STEP 4 — Install Dependencies
-  In the Command Prompt, type these two commands one by one:
+  In the Command Prompt, type these commands one by one:
     cd Desktop\upsc_app
     pip install -r requirements.txt
 
@@ -25,6 +25,11 @@ STEP 5 — Start the Backend (Terminal 1)
     cd backend
     python -m uvicorn main:app --port 8000
   Leave this window OPEN (do not close it)
+
+  *** IF YOU SEE ERROR: "Only one usage of each socket address" ***
+  Port 8000 is already in use. Run this first to free it:
+    for /f "tokens=5" %a in ('netstat -ano ^| findstr :8000') do taskkill /PID %a /F
+  Then retry the uvicorn command above.
 
 STEP 6 — Start the Frontend (Terminal 2)
   Open a NEW Command Prompt (Win + R → cmd → Enter)
